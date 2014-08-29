@@ -9,6 +9,16 @@ describe 'Dateline', ->
   after ->
     timekeeper.reset()
 
+  describe 'constructor', ->
+    it 'accepts a passed date object', ->
+      expected = new Date(2014, 7, 28, 22, 5)
+      actual = Dateline(expected)
+      assert.equal expected.toDateString(), actual.toDateString()
+
+    it 'defaults to the current date', ->
+      expected = new Date()
+      assert.equal expected.toDateString(), Dateline().toDateString()
+
   describe 'getTime', ->
     it 'formats times according to AP style', ->
       actual1 = Dateline new Date(2013, 3, 1, 2, 4)

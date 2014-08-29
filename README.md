@@ -13,7 +13,11 @@ Dateline = require('dateline');
 
 var newYears = Dateline(new Date(2014, 0, 1, 0, 0););
 
+// Any format accepted by Date.parse is fine
 var moonWalk = Dateline(new Date(-14159040000));
+
+// Defaults to the current date/time
+var now = Dateline();
 ```
 
 Call through to native date methods to your heart's content:

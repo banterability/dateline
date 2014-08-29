@@ -1,4 +1,4 @@
-Deadline = (dateObj) ->
+Deadline = (dateObj = new Date()) ->
 
   dateObj.getTimeString = ->
     hours = dateObj.getHours()
