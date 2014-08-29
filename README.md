@@ -1,6 +1,6 @@
 # Dateline
 
-[Associated Press style](http://en.wikipedia.org/wiki/AP_Stylebook) style date & times for JavaScript & Node.js
+[Associated Press style](http://en.wikipedia.org/wiki/AP_Stylebook) date & times
 
 [![Build Status](https://travis-ci.org/banterability/dateline.png)](https://travis-ci.org/banterability/dateline)
 
