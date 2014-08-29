@@ -1,6 +1,6 @@
 Deadline = (dateObj = new Date()) ->
 
-  dateObj.getTimeString = ->
+  dateObj.getAPTime = ->
     hours = dateObj.getHours()
     minutes = dateObj.getMinutes()
 
@@ -18,7 +18,7 @@ Deadline = (dateObj = new Date()) ->
 
     "#{hour}:#{minute} #{timeOfDay}"
 
-  dateObj.getDateString = (options = {}) ->
+  dateObj.getAPDate = (options = {}) ->
     month = dateObj.getMonth()
     date = dateObj.getDate()
     year = dateObj.getFullYear()

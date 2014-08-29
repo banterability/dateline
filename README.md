@@ -20,31 +20,31 @@ var moonWalk = Dateline(new Date(-14159040000));
 var now = Dateline();
 ```
 
-Call through to native date methods to your heart's content:
+Call through to [native date methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Date_instances) to your heart's content:
 
 ```js
 moonWalk.getFullYear();
 // -> 1969
 ```
 
-Dateline also adds new methods.
+Dateline adds two methods to the mix:
 
-**`#getTime()`** returns an AP-style time string:
+**`#getAPTime()`** returns an AP-style time string:
 
 ```js
-newYears.getTime();
+newYears.getAPTime();
 // -> 'midnight'
 
-moonWalk.getTime();
+moonWalk.getAPTime();
 // -> '9:56 p.m.'
 ```
 
-**`#getDate()`** returns an AP-style date string:
+**`#getAPDate()`** returns an AP-style date string:
 
 ```js
-newYears.getDate();
+newYears.getAPDate();
 // -> 'Jan. 1'
 
-moonWalk.getDate();
+moonWalk.getAPDate();
 // -> 'July 20, 1969'
 ```
