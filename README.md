@@ -50,7 +50,7 @@ moonWalk.getAPDate();
 ```
 
 Available options:
-- *includeYear*: Always include the year, even if it matches the current one:
+- `includeYear`: Always include the year, even if it matches the current one:
 
 ```js
 // Today is August 28, 2014...
