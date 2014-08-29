@@ -1,0 +1,34 @@
+{
+  "name": "dateline",
+  "version": "0.10.0",
+  "description": "Associated Press style date & times for JavaScript & Node.js",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "time",
+    "ap",
+    "associated press",
+    "date"
+  ],
+  "author": "Jeff Long",
+  "license": "MIT",
+  "devDependencies": {
+    "assertive": "^1.4.0",
+    "coffee-script": "^1.8.0",
+    "mocha": "^1.21.4",
+    "timekeeper": "0.0.4"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/banterability/dateline.git"
+  },
+  "bugs": {
+    "url": "https://github.com/banterability/dateline/issues"
+  },
+  "homepage": "https://github.com/banterability/dateline"
+}
