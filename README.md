@@ -39,7 +39,7 @@ moonWalk.getAPTime();
 // -> '9:56 p.m.'
 ```
 
-**`#getAPDate()`** returns an AP-style date string:
+**`#getAPDate(options)`** returns an AP-style date string:
 
 ```js
 newYears.getAPDate();
@@ -47,4 +47,17 @@ newYears.getAPDate();
 
 moonWalk.getAPDate();
 // -> 'July 20, 1969'
+```
+
+Available options:
+- *includeYear*: Always include the year, even if it matches the current one:
+
+```js
+// Today is August 28, 2014...
+
+Dateline().getAPDate();
+// -> 'Aug. 28'
+
+Dateline().getAPDate({includeYear: true});
+// -> 'Aug. 28, 2014'
 ```
