@@ -9,9 +9,9 @@
 Pass in a [JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), get a wrapped `Dateline` object back:
 
 ```js
-Dateline = require('dateline');
+var Dateline = require('dateline');
 
-var newYears = Dateline(new Date(2014, 0, 1, 0, 0););
+var newYears = Dateline(new Date(2014, 0, 1, 0, 0));
 
 // Any format accepted by Date.parse is fine
 var moonWalk = Dateline(new Date(-14159040000));
