@@ -18,15 +18,15 @@ Deadline = (dateObj) ->
 
     "#{hour}:#{minute} #{timeOfDay}"
 
-  dateObj.getDateString = ->
+  dateObj.getDateString = (options = {}) ->
     month = dateObj.getMonth()
     date = dateObj.getDate()
     year = dateObj.getFullYear()
 
     monthName = monthNames[month]
 
-    # Special case: Don't show current year
-    return "#{monthName} #{date}" if year == (new Date()).getFullYear()
+    if (year == new Date().getFullYear()) && !options.includeYear?
+      return "#{monthName} #{date}"
 
     "#{monthName} #{date}, #{year}"
 
