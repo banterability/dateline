@@ -2,9 +2,12 @@ assert = require 'assertive'
 Dateline = require '../lib'
 timekeeper = require 'timekeeper'
 
-testNativeMethod = (methodName, dateObj=new Date()) ->
+testNativeMethod = (methodName) ->
+  dateObj = new Date()
+  datelineObj = new Dateline(dateObj)
+
   it "calls through to native #{methodName} method", ->
-    assert.equal dateObj[methodName](), new Dateline(dateObj)[methodName]()
+    assert.equal dateObj[methodName](), datelineObj[methodName]()
 
 describe 'Dateline', ->
   before ->
