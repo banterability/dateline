@@ -2,6 +2,10 @@ assert = require 'assertive'
 Dateline = require '../lib'
 timekeeper = require 'timekeeper'
 
+testNativeMethod = (methodName, dateObj=new Date()) ->
+  it "calls through to native #{methodName} method", ->
+    assert.equal dateObj[methodName](), new Dateline(dateObj)[methodName]()
+
 describe 'Dateline', ->
   before ->
     timekeeper.freeze(new Date(2013, 1, 1))
@@ -23,23 +27,27 @@ describe 'Dateline', ->
     before ->
       @dl = new Dateline()
 
-    it 'passes through to native getDate', ->
-      assert.equal new Date().getDate(), @dl.getDate()
+    nativeMethods = [
+      'getDate'
+      'getDay'
+      'getFullYear'
+      'getHours'
+      'getMilliseconds'
+      'getMinutes'
+      'getMonth'
+      'getSeconds'
+      'getTime'
+      'getTimezoneOffset'
+      'getUTCDate'
+      'getUTCDay'
+      'getUTCFullYear'
+      'getUTCHours'
+      'getUTCMilliseconds'
+      'getUTCMinutes'
+      'getUTCMonth'
+      'getUTCSeconds'
+      'getYear'
+    ]
 
-    it 'passes through to native getDay', ->
-      assert.equal new Date().getDay(), @dl.getDay()
-
-    it 'passes through to native getFullYear', ->
-      assert.equal new Date().getFullYear(), @dl.getFullYear()
-
-    it 'passes through to native getHours', ->
-      assert.equal new Date().getHours(), @dl.getHours()
-
-    it 'passes through to native getMinutes', ->
-      assert.equal new Date().getMinutes(), @dl.getMinutes()
-
-    it 'passes through to native getMonth', ->
-      assert.equal new Date().getMonth(), @dl.getMonth()
-
-    it 'passes through to native getYear', ->
-      assert.equal new Date().getYear(), @dl.getYear()
+    for method in nativeMethods
+      testNativeMethod(method)
