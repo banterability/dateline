@@ -4,7 +4,7 @@ timekeeper = require 'timekeeper'
 
 testNativeMethod = (methodName) ->
   dateObj = new Date()
-  datelineObj = new Dateline(dateObj)
+  datelineObj = Dateline dateObj
 
   it "calls through to native #{methodName} method", ->
     assert.equal dateObj[methodName](), datelineObj[methodName]()
@@ -28,7 +28,7 @@ describe 'Dateline', ->
 
   describe 'native methods', ->
     before ->
-      @dl = new Dateline()
+      @dl = Dateline()
 
     nativeMethods = [
       'getDate'
