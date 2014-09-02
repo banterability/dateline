@@ -1,6 +1,6 @@
 Deadline = (dateObj = new Date()) ->
 
-  dateObj.getAPTime = ->
+  dateObj.getAPTime = (options = {}) ->
     hours = dateObj.getHours()
     minutes = dateObj.getMinutes()
 
@@ -12,7 +12,8 @@ Deadline = (dateObj = new Date()) ->
     hour = formatHours(hours)
 
     # Special case: Don't show minutes at the top of the hour
-    return "#{hour} #{timeOfDay}" if topOfHour(minutes)
+    if topOfHour(minutes) && !options.includeMinutes?
+      return "#{hour} #{timeOfDay}"
 
     minute = formatMinutes(minutes)
 

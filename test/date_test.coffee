@@ -35,7 +35,7 @@ describe 'getAPDate', ->
 
       it 'shows the current year if option passed', ->
         actual = Dateline new Date(2013, 11, 31)
-        assert.equal 'Dec. 31, 2013', actual.getAPDate({includeYear: true})
+        assert.equal 'Dec. 31, 2013', actual.getAPDate {includeYear: true}
 
   describe 'abbreviating months', ->
     it 'handles January', ->

@@ -26,14 +26,21 @@ describe 'getAPTime', ->
     assert.equal '11:11 p.m.', actual2.getAPTime()
 
   describe 'special cases', ->
-    it 'does not show minutes at the top of the hour', ->
-      actual = Dateline new Date(2013, 7, 7, 14, 0)
-      assert.equal '2 p.m.', actual.getAPTime()
+    describe 'top of the hour', ->
+      before ->
+        @dl = Dateline new Date(2013, 7, 7, 14, 0)
 
-    it 'returns "midnight" for 12:00 a.m.', ->
-      actual = Dateline new Date(2013,0,1,0,0)
-      assert.equal 'midnight', actual.getAPTime()
+      it 'does not show minutes at the top of the hour by default', ->
+        assert.equal '2 p.m.', @dl.getAPTime()
 
-    it 'returns "noon" for 12:00 p.m.', ->
-      actual = Dateline new Date(2013,0,1,12,0)
-      assert.equal 'noon', actual.getAPTime()
+      it 'shows minutes at the top of the hour if option passed', ->
+        assert.equal '2:00 p.m.', @dl.getAPTime {includeMinutes: true}
+
+    describe 'special hours', ->
+      it 'returns "midnight" for 12:00 a.m.', ->
+        actual = Dateline new Date(2013,0,1,0,0)
+        assert.equal 'midnight', actual.getAPTime()
+
+      it 'returns "noon" for 12:00 p.m.', ->
+        actual = Dateline new Date(2013,0,1,12,0)
+        assert.equal 'noon', actual.getAPTime()

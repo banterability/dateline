@@ -39,6 +39,19 @@ moonWalk.getAPTime();
 // -> '9:56 p.m.'
 ```
 
+Available options:
+- `includeMinutes`: Always include minutes, even at the top of the hour:
+
+```js
+// The current time is 11:00 a.m....
+
+Dateline().getAPTime();
+// -> '11 a.m.'
+
+Dateline().getAPTime({includeMinutes: true});
+// -> '11:00 a.m.'
+```
+
 **`#getAPDate(options)`** returns an AP-style date string:
 
 ```js
