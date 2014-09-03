@@ -26,7 +26,7 @@ Deadline = (dateObj = new Date()) ->
     monthName = monthNames[month]
 
     # Don't show current year by default
-    return "#{monthName} #{date}" if showFullYear year, options
+    return "#{monthName} #{date}" if showYear year, options
 
     "#{monthName} #{date}, #{year}"
 
@@ -73,5 +73,5 @@ monthNames = [
   'Dec.'
 ]
 
-showFullYear = (year, options) ->
+showYear = (year, options) ->
   (year == new Date().getFullYear()) && !options.includeYear?
