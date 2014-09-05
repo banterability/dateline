@@ -37,6 +37,36 @@ describe 'getAPDate', ->
         actual = Dateline new Date(2013, 11, 31)
         assert.equal 'Dec. 31, 2013', actual.getAPDate {includeYear: true}
 
+    describe 'dates in the last seven days', ->
+      describe 'use month and figures by default', ->
+        it 'one day ago', ->
+          actual = Dateline new Date(2012, 11, 31)
+          assert.equal 'Dec. 31, 2012', actual.getAPDate()
+
+        it 'two days ago', ->
+          actual = Dateline new Date(2012, 11, 30)
+          assert.equal 'Dec. 30, 2012', actual.getAPDate()
+
+        it 'three days ago', ->
+          actual = Dateline new Date(2012, 11, 29)
+          assert.equal 'Dec. 29, 2012', actual.getAPDate()
+
+        it 'four days ago', ->
+          actual = Dateline new Date(2012, 11, 28)
+          assert.equal 'Dec. 28, 2012', actual.getAPDate()
+
+        it 'five days ago', ->
+          actual = Dateline new Date(2012, 11, 27)
+          assert.equal 'Dec. 27, 2012', actual.getAPDate()
+
+        it 'six days ago', ->
+          actual = Dateline new Date(2012, 11, 26)
+          assert.equal 'Dec. 26, 2012', actual.getAPDate()
+
+        it 'seven days ago', ->
+          actual = Dateline new Date(2012, 11, 25)
+          assert.equal 'Dec. 25, 2012', actual.getAPDate()
+
   describe 'abbreviating months', ->
     it 'handles January', ->
       actual = Dateline new Date(2012, 0, 1)
