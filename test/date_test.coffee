@@ -4,7 +4,7 @@ timekeeper = require 'timekeeper'
 
 describe 'getAPDate', ->
   before ->
-    timekeeper.freeze(new Date(2013, 1, 1))
+    timekeeper.freeze(new Date(2013, 0, 1))
 
   after ->
     timekeeper.reset()
@@ -66,6 +66,36 @@ describe 'getAPDate', ->
         it 'seven days ago', ->
           actual = Dateline new Date(2012, 11, 25)
           assert.equal 'Dec. 25, 2012', actual.getAPDate()
+
+      describe 'use day of the week when option passed', ->
+        it 'one day ago', ->
+          actual = Dateline new Date(2012, 11, 31)
+          assert.equal 'Monday', actual.getAPDate {useDayNameForLastWeek: true}
+
+        it 'two days ago', ->
+          actual = Dateline new Date(2012, 11, 30)
+          assert.equal 'Sunday', actual.getAPDate {useDayNameForLastWeek: true}
+
+        it 'three days ago', ->
+          actual = Dateline new Date(2012, 11, 29)
+          assert.equal 'Saturday', actual.getAPDate {useDayNameForLastWeek: true}
+
+        it 'four days ago', ->
+          actual = Dateline new Date(2012, 11, 28)
+          assert.equal 'Friday', actual.getAPDate {useDayNameForLastWeek: true}
+
+        it 'five days ago', ->
+          actual = Dateline new Date(2012, 11, 27)
+          assert.equal 'Thursday', actual.getAPDate {useDayNameForLastWeek: true}
+
+        it 'six days ago', ->
+          actual = Dateline new Date(2012, 11, 26)
+          assert.equal 'Wednesday', actual.getAPDate {useDayNameForLastWeek: true}
+
+        it 'seven days ago', ->
+          actual = Dateline new Date(2012, 11, 25)
+          assert.equal 'Dec. 25, 2012', actual.getAPDate {useDayNameForLastWeek: true}
+
 
   describe 'abbreviating months', ->
     it 'handles January', ->

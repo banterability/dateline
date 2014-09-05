@@ -74,3 +74,17 @@ Dateline().getAPDate();
 Dateline().getAPDate({includeYear: true});
 // -> 'Aug. 28, 2014'
 ```
+
+- `useDayNameForLastWeek`: Use the day of the week for dates in the last seven days:
+
+```js
+// Today is June 22, 2009
+
+d1 = new Date(2009,5,20);
+
+Dateline().getAPDate();
+// -> 'June 20'
+
+Dateline().getAPDate({useDayNameForLastWeek: true});
+// -> 'Saturday'
+```

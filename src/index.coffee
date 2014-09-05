@@ -25,10 +25,12 @@ Deadline = (dateObj = new Date()) ->
 
     monthName = monthNames[month]
 
-    # Don't show current year by default
-    return "#{monthName} #{date}" if showYear year, options
-
-    "#{monthName} #{date}, #{year}"
+    if useDayName dateObj, options
+      getDayOfWeek dateObj
+    else if showYear year, options
+      "#{monthName} #{date}"
+    else
+      "#{monthName} #{date}, #{year}"
 
   dateObj
 
@@ -73,5 +75,25 @@ monthNames = [
   'Dec.'
 ]
 
+dayNames = [
+  'Sunday'
+  'Monday'
+  'Tuesday'
+  'Wednesday'
+  'Thursday'
+  'Friday'
+  'Saturday'
+]
+
 showYear = (year, options) ->
   (year == new Date().getFullYear()) && !options.includeYear?
+
+getDayOfWeek = (dateObj) ->
+  dayNames[dateObj.getDay()]
+
+useDayName = (dateObj, options) ->
+  options.useDayNameForLastWeek? && withinSevenDays(new Date(), dateObj)
+
+withinSevenDays = (date1, date2) ->
+  oneDayInMs = 1000 * 60 * 60 * 24
+  -7 < ((date2 - date1) / oneDayInMs) < 0
