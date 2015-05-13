@@ -34,7 +34,12 @@ Dateline = (dateObj = new Date()) ->
 
   dateObj
 
-module.exports = Dateline
+# Export for Node or browser
+if module?.exports
+  module.exports = Dateline
+else
+  this.Dateline = Dateline
+
 
 ################
 # Time Helpers #
