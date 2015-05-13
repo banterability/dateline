@@ -2,7 +2,7 @@
   "name": "dateline",
   "version": "1.2.0",
   "description": "Associated Press style date & times for JavaScript & Node.js",
-  "main": "lib/index.js",
+  "main": "lib/dateline.js",
   "scripts": {
     "test": "mocha"
   },

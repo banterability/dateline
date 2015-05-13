@@ -1,5 +1,5 @@
 assert = require 'assertive'
-Dateline = require '../lib'
+Dateline = require '../lib/dateline'
 timekeeper = require 'timekeeper'
 
 describe 'getAPDate', ->
