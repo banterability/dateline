@@ -4,13 +4,29 @@
 
 [![Build Status](https://travis-ci.org/banterability/dateline.png)](https://travis-ci.org/banterability/dateline)
 
+## Installation
+
+```bash
+$ npm install dateline --save
+```
+
+If you're only concerned about the library itself, it can be found at `lib/dateline.js`.
+
+### In the browser
+
+Dateline is available on the global `window` object.
+
+### On the server
+
+```js
+var Dateline = require('dateline');
+```
+
 ## Usage
 
 Pass in a [JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), get a wrapped `Dateline` object back:
 
 ```js
-var Dateline = require('dateline');
-
 var newYears = Dateline(new Date(2014, 0, 1, 0, 0));
 
 // Any format accepted by Date.parse is fine
