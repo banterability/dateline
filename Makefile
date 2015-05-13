@@ -5,9 +5,13 @@ usage:
 	@echo 'Task         : Description'
 	@echo '------------ : -----------'
 	@echo 'make build   : Recompile from Coffeescript'
+	@echo 'make test    : Recompile and run tests'
 	@echo ''
 
-build:
-	$(COFFEE) -co lib src/
+.PHONY: test
 
-.PHONY: build
+build:
+	$(COFFEE) -co lib src
+
+test: build
+	npm test
