@@ -9,7 +9,7 @@ testNativeMethod = (methodName) ->
   it "calls through to native #{methodName} method", ->
     assert.equal dateObj[methodName](), datelineObj[methodName]()
 
-describe 'Dateline', ->
+describe 'Constructor & Wrapping', ->
   before ->
     timekeeper.freeze(new Date(2013, 1, 1))
 
