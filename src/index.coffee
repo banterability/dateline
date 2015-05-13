@@ -1,4 +1,4 @@
-Deadline = (dateObj = new Date()) ->
+Dateline = (dateObj = new Date()) ->
 
   dateObj.getAPTime = (options = {}) ->
     hours = dateObj.getHours()
@@ -34,7 +34,7 @@ Deadline = (dateObj = new Date()) ->
 
   dateObj
 
-module.exports = Deadline
+module.exports = Dateline
 
 ################
 # Time Helpers #
