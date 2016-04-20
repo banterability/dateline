@@ -1,3 +1,10 @@
+env:
+  - TEST_ENV=browser
+  - TEST_ENV=node
 language: node_js
 node_js:
   - "0.10"
+  - "0.12"
+  - "4.0"
+script:
+  "npm run test-$TEST_ENV"
