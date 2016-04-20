@@ -1,17 +1,8 @@
 assert = require('assertive');
-timekeeper = require('timekeeper');
 
 Dateline = require('../lib/dateline');
 
 describe('#getAPTime', function(){
-  before(function(){
-    timekeeper.freeze(new Date(2013, 1,1));
-  });
-
-  after(function(){
-    timekeeper.reset();
-  });
-
   describe('formats times according to AP style', function(){
     it('handles single digit hour in the morning', function(){
       var actual = Dateline(new Date(2013, 3, 1, 2, 4));
