@@ -1,3 +1,5 @@
+before_install:
+  - export TZ=America/Chicago
 language: node_js
 node_js:
   - "0.10"
