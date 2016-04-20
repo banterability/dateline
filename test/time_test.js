@@ -1,6 +1,6 @@
-assert = require('assertive');
+var assert = require('assertive');
 
-Dateline = require('../lib/dateline');
+var Dateline = require('../dateline');
 
 describe('#getAPTime', function(){
   describe('formats times according to AP style', function(){

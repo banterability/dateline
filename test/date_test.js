@@ -1,7 +1,7 @@
 var assert = require('assertive');
 var timekeeper = require('timekeeper');
 
-var Dateline = require('../lib/dateline');
+var Dateline = require('../dateline');
 
 TEST_MONTHS = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 

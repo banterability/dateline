@@ -1,7 +1,7 @@
 var assert = require('assertive');
 var timekeeper = require('timekeeper');
 
-var Dateline = require('../lib/dateline');
+var Dateline = require('../dateline');
 
 var NATIVE_METHODS = [
   'getDate',
