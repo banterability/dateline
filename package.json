@@ -18,7 +18,6 @@
   "devDependencies": {
     "assertive": "^1.4.0",
     "browserify": "^13.0.0",
-    "coffee-script": "^1.8.0",
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.3",
     "karma-mocha": "^0.2.2",
