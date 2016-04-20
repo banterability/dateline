@@ -10,7 +10,7 @@
 $ npm install dateline --save
 ```
 
-If you're only concerned about the library itself, it can be found at `lib/dateline.js`.
+If you're only concerned about the library itself, it can be found at `dateline.js`.
 
 ### In the browser
 
@@ -29,7 +29,7 @@ Pass in a [JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScr
 ```js
 var newYears = Dateline(new Date(2014, 0, 1, 0, 0));
 
-// Any format accepted by Date.parse is fine
+// Any valid date will do
 var moonWalk = Dateline(new Date(-14159040000));
 
 // Defaults to the current date/time
@@ -96,11 +96,11 @@ Dateline().getAPDate({includeYear: true});
 ```js
 // Today is June 22, 2009
 
-d1 = new Date(2009,5,20);
+var myDate = new Date(2009, 5, 20);
 
-Dateline().getAPDate();
+Dateline(myDate).getAPDate();
 // -> 'June 20'
 
-Dateline().getAPDate({useDayNameForLastWeek: true});
+Dateline(myDate).getAPDate({useDayNameForLastWeek: true});
 // -> 'Saturday'
 ```
