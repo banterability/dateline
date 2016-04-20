@@ -5,7 +5,8 @@
   "main": "dateline.js",
   "scripts": {
     "test-browser": "karma start test/karma.conf.js",
-    "test-node": "mocha"
+    "test-node": "mocha",
+    "test": "npm run test-node && npm run test-browser"
   },
   "keywords": [
     "time",
