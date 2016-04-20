@@ -1,3 +1,8 @@
+2.1.0
+-----
+* Switched from CoffeeScript to plain JavaScript. While there should be no breaking changes, bumping the version out of an abundance of caution.
+* Added an in-browser (`phantomjs`) test suite
+
 2.0.0
 -----
 * Expose `Dateline` object globally outside a Node-like environment
