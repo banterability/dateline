@@ -2,6 +2,7 @@
 
 [Associated Press style](http://en.wikipedia.org/wiki/AP_Stylebook) date & times
 
+[![Latest Version](https://img.shields.io/npm/v/dateline.svg)](https://www.npmjs.com/package/dateline)
 [![Build Status](https://travis-ci.org/banterability/dateline.png)](https://travis-ci.org/banterability/dateline)
 
 ## Installation
