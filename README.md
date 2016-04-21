@@ -2,6 +2,7 @@
 
 [Associated Press style](http://en.wikipedia.org/wiki/AP_Stylebook) date & times
 
+[![Latest Version](https://img.shields.io/npm/v/dateline.svg)](https://www.npmjs.com/package/dateline)
 [![Build Status](https://travis-ci.org/banterability/dateline.png)](https://travis-ci.org/banterability/dateline)
 
 ## Installation
@@ -10,11 +11,9 @@
 $ npm install dateline --save
 ```
 
-If you're only concerned about the library itself, it can be found at `dateline.js`.
-
 ### In the browser
 
-Dateline is available on the global `window` object.
+Include `dateline.js` to expose `Dateline` on the global `window` object. Also plays nicely with [Browserify](http://browserify.org/) + `require`, et al.
 
 ### On the server
 
