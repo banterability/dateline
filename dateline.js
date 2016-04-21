@@ -1,7 +1,7 @@
 (function(){
   var MONTH_NAMES = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.'];
   var DAY_NAMES = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  //
+
   var Dateline = function(dateObj){
     if (dateObj == null){
       dateObj = new Date();

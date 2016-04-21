@@ -3,7 +3,7 @@ var timekeeper = require('timekeeper');
 
 var Dateline = require('../dateline');
 
-TEST_MONTHS = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+var TEST_MONTHS = ['Jan.', 'Feb.', 'March', 'April', 'May', 'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
 
 function testMonth(monthNumber, monthAbbreviation){
   it('maps month ' + monthNumber + ' to ' + monthAbbreviation, function(){
