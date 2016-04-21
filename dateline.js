@@ -60,8 +60,8 @@
   }
 
   // Export for Node or browser
-  if (typeof module !== "undefined" && module !== null ? module.exports : void 0) {
-    module.exports = Dateline;
+  if (typeof module !== "undefined" && module !== null ? module.exports : void 0) { // eslint-disable-line no-undef
+    module.exports = Dateline; // eslint-disable-line no-undef
   } else {
     this.Dateline = Dateline;
   }
