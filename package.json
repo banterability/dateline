@@ -4,9 +4,10 @@
   "description": "Associated Press style date & times for JavaScript & Node.js",
   "main": "dateline.js",
   "scripts": {
+    "lint": "eslint dateline.js test/",
     "test-browser": "karma start test/karma.conf.js",
     "test-node": "mocha",
-    "test": "npm run test-node && npm run test-browser"
+    "test": "npm run lint && npm run test-node && npm run test-browser"
   },
   "keywords": [
     "time",
