@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Wed Apr 20 2016 14:38:01 GMT-0500 (CDT)
+process.env.CHROME_BIN = require('puppeteer').executablePath()
 
 module.exports = function(config) {
   config.set({
@@ -10,7 +11,7 @@ module.exports = function(config) {
     },
     reporters: ['progress'],
     colors: true,
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
     singleRun: true
   })
 }
