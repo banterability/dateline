@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:lts
+    working_directory: ~/dateline
+    steps:
+      - checkout
+      - restore_cache:
+          key: npm-cache{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache:
+          key: npm-cache{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      - run: npm test
