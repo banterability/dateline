@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: circleci/node:lts-browsers
+        environment:
+          TZ: "America/Chicago"
     working_directory: ~/dateline
     steps:
       - checkout
