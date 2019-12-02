@@ -1,3 +1,7 @@
+2.1.1
+-----
+* CI & dependency updates
+
 2.1.0
 -----
 * Switched from CoffeeScript to plain JavaScript. While there should be no breaking changes, bumping the version out of an abundance of caution.
