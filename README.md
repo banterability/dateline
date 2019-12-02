@@ -2,13 +2,13 @@
 
 [Associated Press style](http://en.wikipedia.org/wiki/AP_Stylebook) date & times
 
-[![Latest Version](https://img.shields.io/npm/v/dateline.svg?style=flat-square)](https://www.npmjs.com/package/dateline)
-[![Build Status](https://img.shields.io/travis/banterability/dateline.svg?style=flat-square)](https://travis-ci.org/banterability/dateline)
+[![Latest Version](https://img.shields.io/npm/v/dateline.svg)](https://www.npmjs.com/package/dateline)
+[![Build status](https://img.shields.io/circleci/project/github/banterability/dateline/master.svg)](https://circleci.com/gh/banterability/dateline/tree/master)
 
 ## Installation
 
 ```bash
-$ npm install dateline --save
+$ npm install dateline
 ```
 
 ### In the browser
