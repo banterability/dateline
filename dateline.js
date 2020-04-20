@@ -1,4 +1,14 @@
 (function () {
+  var DAY_NAMES = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
   var MONTH_NAMES = [
     "Jan.",
     "Feb.",
@@ -13,16 +23,9 @@
     "Nov.",
     "Dec.",
   ];
-  var DAY_NAMES = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  //
+
+  var ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
+
   var Dateline = function (dateObj) {
     if (dateObj == null) {
       dateObj = new Date();
@@ -127,9 +130,7 @@
   }
 
   function withinSevenDays(dateObj) {
-    var ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
-    var diff = dateObj - new Date();
-    var diffInDays = diff / ONE_DAY_IN_MS;
+    var diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
     return -7 < diffInDays && diffInDays < 0;
   }
 }.call(this));
