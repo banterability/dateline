@@ -1,3 +1,9 @@
+2.2.0
+-----
+* Performance tweaks
+* Use 'prettier' for formatting
+* CI & dependency updates
+
 2.1.1
 -----
 * CI & dependency updates
