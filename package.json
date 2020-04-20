@@ -4,6 +4,7 @@
   "description": "Associated Press style date & times for JavaScript & Node.js",
   "main": "dateline.js",
   "scripts": {
+    "prettier": "prettier --write '**/*.js'",
     "test-browser": "karma start test/karma.conf.js",
     "test-node": "mocha",
     "test": "npm run test-node && npm run test-browser"
@@ -24,6 +25,7 @@
     "karma-chrome-launcher": "^3.1.0",
     "karma-mocha": "2.0.0",
     "mocha": "7.1.1",
+    "prettier": "^2.0.4",
     "puppeteer": "2.1.1",
     "timekeeper": "2.2.0",
     "watchify": "^3.11.1"
