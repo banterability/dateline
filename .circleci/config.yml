@@ -10,7 +10,7 @@ jobs:
       - checkout
       - restore_cache:
           key: npm-cache{{ checksum "package.json" }}
-      - run: npm install
+      - run: npm ci
       - save_cache:
           key: npm-cache{{ checksum "package.json" }}
           paths:
