@@ -1,3 +1,8 @@
+2.2.1
+-----
+* Exclude test & configuration files from distrbuted package
+* Dependency updates
+
 2.2.0
 -----
 * Performance tweaks
