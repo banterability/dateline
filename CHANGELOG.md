@@ -1,6 +1,6 @@
 2.2.1
 -----
-* Exclude test & configuration files from distrbuted package
+* Exclude test & configuration files from distributed package
 * Dependency updates
 
 2.2.0
