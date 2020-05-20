@@ -20,7 +20,7 @@
   "devDependencies": {
     "assertive": "5.0.1",
     "browserify": "^16.5.0",
-    "karma": "5.0.8",
+    "karma": "5.0.9",
     "karma-browserify": "7.0.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-mocha": "2.0.1",
