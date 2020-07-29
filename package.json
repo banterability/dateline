@@ -1,6 +1,6 @@
 {
   "name": "dateline",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Associated Press style date & times for JavaScript & Node.js",
   "main": "dateline.js",
   "scripts": {
