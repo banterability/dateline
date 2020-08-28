@@ -1,3 +1,8 @@
+## 2.2.3
+
+- Dependency updates
+- CI fixes
+
 ## 2.2.2
 
 - Dependency updates
@@ -40,7 +45,7 @@
   - File changed from 'index' to 'dateline'
   - Module name changed from 'Deadline' to 'Dateline' internally
 
-  1.2.0
+    1.2.0
 
 ---
 
