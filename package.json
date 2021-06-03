@@ -18,7 +18,7 @@
   "author": "Jeff Long",
   "license": "MIT",
   "devDependencies": {
-    "assertive": "5.0.3",
+    "assertive": "5.0.4",
     "browserify": "^17.0.0",
     "karma": "6.3.2",
     "karma-browserify": "8.0.0",
