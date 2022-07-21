@@ -26,7 +26,7 @@
     "karma-mocha": "2.0.1",
     "mocha": "9.2.2",
     "prettier": "^2.0.4",
-    "puppeteer": "15.4.0",
+    "puppeteer": "15.4.1",
     "timekeeper": "2.2.0",
     "watchify": "^3.11.1"
   },
