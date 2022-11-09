@@ -28,7 +28,7 @@
     "prettier": "^2.0.4",
     "puppeteer": "19.2.2",
     "timekeeper": "2.2.0",
-    "watchify": "^3.11.1"
+    "watchify": "^4.0.0"
   },
   "directories": {
     "test": "test"
