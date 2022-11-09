@@ -1,3 +1,7 @@
+## 2.2.4
+
+- Dependency updates
+
 ## 2.2.3
 
 - Dependency updates
