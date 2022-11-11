@@ -1,6 +1,6 @@
 var assert = require("assertive");
 
-var Dateline = require("../dateline");
+var {Dateline} = require("../dist/browser");
 
 describe("#getAPTime", function () {
   describe("formats times according to AP style", function () {

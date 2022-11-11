@@ -1,7 +1,7 @@
 var assert = require("assertive");
 var timekeeper = require("timekeeper");
 
-var Dateline = require("../dateline");
+var {Dateline} = require("../dist/browser");
 
 TEST_MONTHS = [
   "Jan.",

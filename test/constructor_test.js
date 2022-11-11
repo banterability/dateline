@@ -1,7 +1,7 @@
 var assert = require("assertive");
 var timekeeper = require("timekeeper");
 
-var Dateline = require("../dateline");
+var {Dateline} = require("../dist/browser");
 
 var NATIVE_METHODS = [
   "getDate",
@@ -25,12 +25,12 @@ var NATIVE_METHODS = [
   "getYear",
 ];
 
-function testNativeMethod(methodName) {
+function testNativeMethod(methodName: string) {
   var dateObj = new Date();
   var datelineObj = Dateline(dateObj);
 
   it("calls through to native #" + methodName, function () {
-    assert.equal(dateObj[methodName](), datelineObj[methodName]());
+    assert.equal(eval(dateObj[methodName]()), eval(datelineObj[methodName]()));
   });
 }
 
