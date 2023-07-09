@@ -61,7 +61,7 @@ describe("README", function () {
         it("incldues minutes at the top of the hour if option is passed", function () {
           assert.equal(
             "11:00 a.m.",
-            Dateline().getAPTime({includeMinutes: true})
+            Dateline().getAPTime({includeMinutes: true}),
           );
         });
       });
@@ -94,7 +94,7 @@ describe("README", function () {
         it("includes the year for dates in the current year if option is passed", function () {
           assert.equal(
             "Aug. 28, 2014",
-            Dateline().getAPDate({includeYear: true})
+            Dateline().getAPDate({includeYear: true}),
           );
         });
       });
@@ -116,7 +116,7 @@ describe("README", function () {
         it("includes the year for dates in the current year if option is passed", function () {
           assert.equal(
             "Saturday",
-            Dateline(this.myDate).getAPDate({useDayNameForLastWeek: true})
+            Dateline(this.myDate).getAPDate({useDayNameForLastWeek: true}),
           );
         });
       });

@@ -133,4 +133,4 @@
     var diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
     return -7 < diffInDays && diffInDays < 0;
   }
-}.call(this));
+}).call(this);
