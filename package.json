@@ -24,7 +24,7 @@
     "karma-browserify": "8.1.0",
     "karma-chrome-launcher": "^3.1.0",
     "karma-mocha": "2.0.1",
-    "mocha": "10.5.2",
+    "mocha": "10.6.0",
     "prettier": "3.3.2",
     "puppeteer": "22.12.1",
     "timekeeper": "2.3.1",
