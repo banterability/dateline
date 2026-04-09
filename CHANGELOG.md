@@ -6,6 +6,8 @@
 - Replace mocha/assertive/timekeeper with vitest
 - Remove karma, browserify, puppeteer, and watchify dependencies
 - Convert to ES modules (breaking: `require('dateline')` no longer works)
+- Replace `.npmignore` with `"files"` allowlist in package.json
+- Add `"engines"` field (Node >= 12.20.0)
 
 ## 2.2.4
 
