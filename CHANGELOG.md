@@ -1,3 +1,9 @@
+## Unreleased
+
+- Replace CircleCI with GitHub Actions
+- Add `.node-version` file
+- Remove browser test suite from CI (karma/puppeteer)
+
 ## 2.2.4
 
 - Dependency updates

@@ -3,7 +3,7 @@
 [Associated Press style](http://en.wikipedia.org/wiki/AP_Stylebook) date & times
 
 [![Latest Version](https://img.shields.io/npm/v/dateline.svg)](https://www.npmjs.com/package/dateline)
-[![Build status](https://img.shields.io/circleci/project/github/banterability/dateline/main.svg)](https://circleci.com/gh/banterability/dateline/tree/main)
+[![Build status](https://img.shields.io/github/actions/workflow/status/banterability/dateline/ci.yml?branch=main)](https://github.com/banterability/dateline/actions/workflows/ci.yml)
 
 ## Installation
 
