@@ -1,13 +1,9 @@
-## Unreleased
+## 3.0.0
 
-- Replace CircleCI with GitHub Actions
-- Add `.node-version` file
-- Remove browser test suite from CI (karma/puppeteer)
-- Replace mocha/assertive/timekeeper with vitest
-- Remove karma, browserify, puppeteer, and watchify dependencies
-- Convert to ES modules (breaking: `require('dateline')` no longer works)
-- Replace `.npmignore` with `"files"` allowlist in package.json
-- Add `"engines"` field (Node >= 12.20.0)
+- **Breaking change**: Migrated from CJS to ESM
+  - Node: Use `import Dateline from 'dateline'` instead of `require('dateline')`
+  - Browser: Use `import` with `<script type="module">` or a bundler
+- Require Node >= 12.22.0
 
 ## 2.2.4
 
