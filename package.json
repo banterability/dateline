@@ -5,9 +5,7 @@
   "main": "dateline.js",
   "scripts": {
     "prettier": "prettier --write '**/*.js'",
-    "test-browser": "karma start test/karma.conf.js",
-    "test-node": "mocha",
-    "test": "npm run test-node"
+    "test": "vitest"
   },
   "keywords": [
     "time",
@@ -18,17 +16,8 @@
   "author": "Jeff Long",
   "license": "MIT",
   "devDependencies": {
-    "assertive": "5.0.5",
-    "browserify": "^17.0.0",
-    "karma": "6.4.4",
-    "karma-browserify": "8.1.0",
-    "karma-chrome-launcher": "^3.1.0",
-    "karma-mocha": "2.0.1",
-    "mocha": "11.7.5",
     "prettier": "3.8.1",
-    "puppeteer": "24.40.0",
-    "timekeeper": "2.3.1",
-    "watchify": "^4.0.0"
+    "vitest": "^4.1.3"
   },
   "directories": {
     "test": "test"

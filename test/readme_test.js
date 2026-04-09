@@ -1,67 +1,68 @@
-var assert = require("assertive");
-var timekeeper = require("timekeeper");
+import {describe, it, expect, beforeAll, afterAll, vi} from "vitest";
 
-var Dateline = require("../dateline");
+import Dateline from "../dateline.js";
 
 describe("README", function () {
-  before(function () {
-    this.newYears = Dateline(new Date(2014, 0, 1, 0, 0));
-    this.moonWalk = Dateline(new Date(-14159040000));
+  var newYears, moonWalk;
+
+  beforeAll(function () {
+    newYears = Dateline(new Date(2014, 0, 1, 0, 0));
+    moonWalk = Dateline(new Date(-14159040000));
   });
 
   describe("Usage", function () {
     it("accepts a date by components", function () {
       var expected = new Date(2014, 0, 1, 0, 0).toDateString();
-      var actual = this.newYears.toDateString();
-      assert.equal(expected, actual);
+      var actual = newYears.toDateString();
+      expect(actual).toBe(expected);
     });
 
     it("accepts a date in any valid format", function () {
       var expected = new Date(-14159040000).toDateString();
-      var actual = this.moonWalk.toDateString();
-      assert.equal(expected, actual);
+      var actual = moonWalk.toDateString();
+      expect(actual).toBe(expected);
     });
 
     it("defaults to the current date/time", function () {
-      timekeeper.freeze();
+      vi.useFakeTimers();
 
       var expected = new Date().toDateString();
       var actual = Dateline().toDateString();
-      assert.equal(expected, actual);
+      expect(actual).toBe(expected);
 
-      timekeeper.reset();
+      vi.useRealTimers();
     });
 
     it("calls through to native methods", function () {
-      assert.equal(1969, this.moonWalk.getFullYear());
+      expect(moonWalk.getFullYear()).toBe(1969);
     });
 
     describe("#getAPTime", function () {
       it("special-cases midnight", function () {
-        assert.equal("midnight", this.newYears.getAPTime());
+        expect(newYears.getAPTime()).toBe("midnight");
       });
 
       it("returns an AP-formatted time", function () {
-        assert.equal("9:56 p.m.", this.moonWalk.getAPTime());
+        expect(moonWalk.getAPTime()).toBe("9:56 p.m.");
       });
 
       describe('"includeMinutes" option', function () {
-        before(function () {
-          timekeeper.freeze(new Date(2016, 3, 20, 11, 0));
+        beforeAll(function () {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(2016, 3, 20, 11, 0));
         });
 
-        after(function () {
-          timekeeper.reset();
+        afterAll(function () {
+          vi.useRealTimers();
         });
 
         it("omits minutes at the top of the hour", function () {
-          assert.equal("11 a.m.", Dateline().getAPTime());
+          expect(Dateline().getAPTime()).toBe("11 a.m.");
         });
 
-        it("incldues minutes at the top of the hour if option is passed", function () {
-          assert.equal(
+        it("includes minutes at the top of the hour if option is passed", function () {
+          expect(Dateline().getAPTime({includeMinutes: true})).toBe(
             "11:00 a.m.",
-            Dateline().getAPTime({includeMinutes: true}),
           );
         });
       });
@@ -69,54 +70,57 @@ describe("README", function () {
 
     describe("#getAPDate", function () {
       it("special-cases dates within the current year", function () {
-        timekeeper.freeze(new Date(2014, 3, 29));
-        assert.equal("Jan. 1", this.newYears.getAPDate());
-        timekeeper.reset();
+        vi.useFakeTimers();
+        vi.setSystemTime(new Date(2014, 3, 29));
+        expect(newYears.getAPDate()).toBe("Jan. 1");
+        vi.useRealTimers();
       });
 
       it("returns an AP-formatted date", function () {
-        assert.equal("July 20, 1969", this.moonWalk.getAPDate());
+        expect(moonWalk.getAPDate()).toBe("July 20, 1969");
       });
 
       describe('"includeYear" option', function () {
-        before(function () {
-          timekeeper.freeze(new Date(2014, 7, 28));
+        beforeAll(function () {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(2014, 7, 28));
         });
 
-        after(function () {
-          timekeeper.reset();
+        afterAll(function () {
+          vi.useRealTimers();
         });
 
         it("omits the year for dates in the current year", function () {
-          assert.equal("Aug. 28", Dateline().getAPDate());
+          expect(Dateline().getAPDate()).toBe("Aug. 28");
         });
 
         it("includes the year for dates in the current year if option is passed", function () {
-          assert.equal(
+          expect(Dateline().getAPDate({includeYear: true})).toBe(
             "Aug. 28, 2014",
-            Dateline().getAPDate({includeYear: true}),
           );
         });
       });
 
       describe('"useDayNameForLastWeek" option', function () {
-        before(function () {
-          timekeeper.freeze(new Date(2009, 5, 22));
-          this.myDate = new Date(2009, 5, 20);
+        var myDate;
+
+        beforeAll(function () {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(2009, 5, 22));
+          myDate = new Date(2009, 5, 20);
         });
 
-        after(function () {
-          timekeeper.reset();
+        afterAll(function () {
+          vi.useRealTimers();
         });
 
         it("omits the year for dates in the current year", function () {
-          assert.equal("June 20", Dateline(this.myDate).getAPDate());
+          expect(Dateline(myDate).getAPDate()).toBe("June 20");
         });
 
         it("includes the year for dates in the current year if option is passed", function () {
-          assert.equal(
+          expect(Dateline(myDate).getAPDate({useDayNameForLastWeek: true})).toBe(
             "Saturday",
-            Dateline(this.myDate).getAPDate({useDayNameForLastWeek: true}),
           );
         });
       });
