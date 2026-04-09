@@ -3,6 +3,8 @@
 - Replace CircleCI with GitHub Actions
 - Add `.node-version` file
 - Remove browser test suite from CI (karma/puppeteer)
+- Replace mocha/assertive/timekeeper with vitest
+- Remove karma, browserify, puppeteer, and watchify dependencies
 
 ## 2.2.4
 

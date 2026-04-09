@@ -1,7 +1,6 @@
-var assert = require("assertive");
-var timekeeper = require("timekeeper");
+import {describe, it, expect, beforeAll, afterAll, vi} from "vitest";
 
-var Dateline = require("../dateline");
+import Dateline from "../dateline.js";
 
 var NATIVE_METHODS = [
   "getDate",
@@ -30,38 +29,35 @@ function testNativeMethod(methodName) {
   var datelineObj = Dateline(dateObj);
 
   it("calls through to native #" + methodName, function () {
-    assert.equal(dateObj[methodName](), datelineObj[methodName]());
+    expect(datelineObj[methodName]()).toBe(dateObj[methodName]());
   });
 }
 
 describe("constructor", function () {
-  before(function () {
-    timekeeper.freeze(new Date(2013, 1, 1));
+  beforeAll(function () {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(2013, 1, 1));
   });
 
-  after(function () {
-    timekeeper.reset();
+  afterAll(function () {
+    vi.useRealTimers();
   });
 
   describe("initialization", function () {
     it("accepts a passed date object", function () {
       var expected = new Date(2014, 7, 28, 22, 5);
       var actual = Dateline(expected);
-      assert.equal(expected.toDateString(), actual.toDateString());
+      expect(actual.toDateString()).toBe(expected.toDateString());
     });
 
     it("defaults to the current date", function () {
       var expected = new Date();
       var actual = Dateline();
-      assert.equal(expected.toDateString(), actual.toDateString());
+      expect(actual.toDateString()).toBe(expected.toDateString());
     });
   });
 
   describe("native methods", function () {
-    before(function () {
-      this.datelineObj = Dateline();
-    });
-
     NATIVE_METHODS.forEach(function (method) {
       testNativeMethod(method);
     });
