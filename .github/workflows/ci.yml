@@ -1,0 +1,53 @@
+name: 🚦 CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  prettier:
+    name: 💅 Prettier
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          cache: npm
+          cache-dependency-path: ./package.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Prettier
+        run: npx prettier --check '**/*.js'
+
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    env:
+      TZ: America/Chicago
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          cache: npm
+          cache-dependency-path: ./package.json
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test
+        run: npm test
