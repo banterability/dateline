@@ -4,6 +4,7 @@
 
 [![Latest Version](https://img.shields.io/npm/v/dateline.svg)](https://www.npmjs.com/package/dateline)
 [![Build status](https://img.shields.io/github/actions/workflow/status/banterability/dateline/ci.yml?branch=main)](https://github.com/banterability/dateline/actions/workflows/ci.yml)
+[![install size](https://packagephobia.com/badge?p=dateline)](https://packagephobia.com/result?p=dateline)
 
 ## Installation
 
