@@ -3,7 +3,11 @@
   "version": "3.0.0",
   "description": "Associated Press style date & times for JavaScript & Node.js",
   "type": "module",
-  "exports": "./dateline.js",
+  "types": "./dateline.d.ts",
+  "exports": {
+    "types": "./dateline.d.ts",
+    "default": "./dateline.js"
+  },
   "scripts": {
     "prettier": "prettier --write .",
     "test": "vitest"
@@ -20,7 +24,8 @@
     "node": ">=12.22.0"
   },
   "files": [
-    "dateline.js"
+    "dateline.js",
+    "dateline.d.ts"
   ],
   "devDependencies": {
     "prettier": "3.8.1",
