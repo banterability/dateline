@@ -28,7 +28,7 @@ jobs:
         run: npm install
 
       - name: Prettier
-        run: npx prettier --check '**/*.js'
+        run: npx prettier --check .
 
   test:
     name: 🧪 Test

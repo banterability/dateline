@@ -18,7 +18,7 @@ Works via `<script type="module">` or any bundler that supports ES modules.
 ### On the server
 
 ```js
-import Dateline from 'dateline';
+import Dateline from "dateline";
 ```
 
 ## Usage
@@ -55,6 +55,7 @@ moonWalk.getAPTime();
 ```
 
 Available options:
+
 - `includeMinutes`: Always include minutes, even at the top of the hour:
 
 ```js
@@ -78,6 +79,7 @@ moonWalk.getAPDate();
 ```
 
 Available options:
+
 - `includeYear`: Always include the year, even if it matches the current one:
 
 ```js

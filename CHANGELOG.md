@@ -56,7 +56,6 @@
 
 - Expose `Dateline` object globally outside a Node-like environment
 - Internal naming changes (potentially breaking for undocumented implementations)
-
   - File changed from 'index' to 'dateline'
   - Module name changed from 'Deadline' to 'Dateline' internally
 
