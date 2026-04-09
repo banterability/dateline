@@ -1,4 +1,4 @@
-var DAY_NAMES = [
+let DAY_NAMES = [
   "Sunday",
   "Monday",
   "Tuesday",
@@ -8,7 +8,7 @@ var DAY_NAMES = [
   "Saturday",
 ];
 
-var MONTH_NAMES = [
+let MONTH_NAMES = [
   "Jan.",
   "Feb.",
   "March",
@@ -23,9 +23,9 @@ var MONTH_NAMES = [
   "Dec.",
 ];
 
-var ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
+let ONE_DAY_IN_MS = 1000 * 60 * 60 * 24;
 
-var Dateline = function (dateObj) {
+let Dateline = function (dateObj) {
   if (dateObj == null) {
     dateObj = new Date();
   }
@@ -35,8 +35,8 @@ var Dateline = function (dateObj) {
       options = {};
     }
 
-    var hours = dateObj.getHours();
-    var minutes = dateObj.getMinutes();
+    let hours = dateObj.getHours();
+    let minutes = dateObj.getMinutes();
 
     // Special cases: "midnight" and "noon"
     if (hours === 0 && minutes === 0) {
@@ -45,16 +45,16 @@ var Dateline = function (dateObj) {
       return "noon";
     }
 
-    var timeOfDay = hours < 12 ? "a.m." : "p.m.";
+    let timeOfDay = hours < 12 ? "a.m." : "p.m.";
 
-    var hour = formatHours(hours);
+    let hour = formatHours(hours);
 
     // Don't show minutes at the top of the hour by default
     if (showMinutes(minutes, options)) {
       return hour + " " + timeOfDay;
     }
 
-    var minute = formatMinutes(minutes);
+    let minute = formatMinutes(minutes);
 
     return hour + ":" + minute + " " + timeOfDay;
   };
@@ -64,11 +64,11 @@ var Dateline = function (dateObj) {
       options = {};
     }
 
-    var month = dateObj.getMonth();
-    var date = dateObj.getDate();
-    var year = dateObj.getFullYear();
+    let month = dateObj.getMonth();
+    let date = dateObj.getDate();
+    let year = dateObj.getFullYear();
 
-    var monthName = MONTH_NAMES[month];
+    let monthName = MONTH_NAMES[month];
 
     if (useDayName(dateObj, options)) {
       return getDayOfWeek(dateObj);
@@ -122,6 +122,6 @@ function useDayName(dateObj, options) {
 }
 
 function withinSevenDays(dateObj) {
-  var diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
+  let diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
   return -7 < diffInDays && diffInDays < 0;
 }

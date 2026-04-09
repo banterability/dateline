@@ -3,7 +3,7 @@ import {describe, it, expect, beforeAll, afterAll, vi} from "vitest";
 import Dateline from "../dateline.js";
 
 describe("README", function () {
-  var newYears, moonWalk;
+  let newYears, moonWalk;
 
   beforeAll(function () {
     newYears = Dateline(new Date(2014, 0, 1, 0, 0));
@@ -12,22 +12,22 @@ describe("README", function () {
 
   describe("Usage", function () {
     it("accepts a date by components", function () {
-      var expected = new Date(2014, 0, 1, 0, 0).toDateString();
-      var actual = newYears.toDateString();
+      let expected = new Date(2014, 0, 1, 0, 0).toDateString();
+      let actual = newYears.toDateString();
       expect(actual).toBe(expected);
     });
 
     it("accepts a date in any valid format", function () {
-      var expected = new Date(-14159040000).toDateString();
-      var actual = moonWalk.toDateString();
+      let expected = new Date(-14159040000).toDateString();
+      let actual = moonWalk.toDateString();
       expect(actual).toBe(expected);
     });
 
     it("defaults to the current date/time", function () {
       vi.useFakeTimers();
 
-      var expected = new Date().toDateString();
-      var actual = Dateline().toDateString();
+      let expected = new Date().toDateString();
+      let actual = Dateline().toDateString();
       expect(actual).toBe(expected);
 
       vi.useRealTimers();
@@ -102,7 +102,7 @@ describe("README", function () {
       });
 
       describe('"useDayNameForLastWeek" option', function () {
-        var myDate;
+        let myDate;
 
         beforeAll(function () {
           vi.useFakeTimers();

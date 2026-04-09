@@ -2,7 +2,7 @@ import {describe, it, expect, beforeAll, afterAll, vi} from "vitest";
 
 import Dateline from "../dateline.js";
 
-var NATIVE_METHODS = [
+let NATIVE_METHODS = [
   "getDate",
   "getDay",
   "getFullYear",
@@ -25,8 +25,8 @@ var NATIVE_METHODS = [
 ];
 
 function testNativeMethod(methodName) {
-  var dateObj = new Date();
-  var datelineObj = Dateline(dateObj);
+  let dateObj = new Date();
+  let datelineObj = Dateline(dateObj);
 
   it("calls through to native #" + methodName, function () {
     expect(datelineObj[methodName]()).toBe(dateObj[methodName]());
@@ -45,14 +45,14 @@ describe("constructor", function () {
 
   describe("initialization", function () {
     it("accepts a passed date object", function () {
-      var expected = new Date(2014, 7, 28, 22, 5);
-      var actual = Dateline(expected);
+      let expected = new Date(2014, 7, 28, 22, 5);
+      let actual = Dateline(expected);
       expect(actual.toDateString()).toBe(expected.toDateString());
     });
 
     it("defaults to the current date", function () {
-      var expected = new Date();
-      var actual = Dateline();
+      let expected = new Date();
+      let actual = Dateline();
       expect(actual.toDateString()).toBe(expected.toDateString());
     });
   });
