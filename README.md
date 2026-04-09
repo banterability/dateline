@@ -13,12 +13,12 @@ $ npm install dateline
 
 ### In the browser
 
-Include `dateline.js` to expose `Dateline` on the global `window` object. Also plays nicely with [Browserify](http://browserify.org/) + `require`, et al.
+Works via `<script type="module">` or any bundler that supports ES modules.
 
 ### On the server
 
 ```js
-var Dateline = require('dateline');
+import Dateline from 'dateline';
 ```
 
 ## Usage
@@ -26,13 +26,13 @@ var Dateline = require('dateline');
 Pass in a [JavaScript Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date), get a wrapped `Dateline` object back:
 
 ```js
-var newYears = Dateline(new Date(2014, 0, 1, 0, 0));
+const newYears = Dateline(new Date(2014, 0, 1, 0, 0));
 
 // Any valid date will do
-var moonWalk = Dateline(new Date(-14159040000));
+const moonWalk = Dateline(new Date(-14159040000));
 
 // Defaults to the current date/time
-var now = Dateline();
+const now = Dateline();
 ```
 
 Call through to [native date methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date#Date_instances) to your heart's content:
