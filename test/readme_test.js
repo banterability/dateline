@@ -119,9 +119,9 @@ describe("README", function () {
         });
 
         it("includes the year for dates in the current year if option is passed", function () {
-          expect(Dateline(myDate).getAPDate({useDayNameForLastWeek: true})).toBe(
-            "Saturday",
-          );
+          expect(
+            Dateline(myDate).getAPDate({useDayNameForLastWeek: true}),
+          ).toBe("Saturday");
         });
       });
     });
