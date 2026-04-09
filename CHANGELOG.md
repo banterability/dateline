@@ -5,6 +5,7 @@
 - Remove browser test suite from CI (karma/puppeteer)
 - Replace mocha/assertive/timekeeper with vitest
 - Remove karma, browserify, puppeteer, and watchify dependencies
+- Convert to ES modules (breaking: `require('dateline')` no longer works)
 
 ## 2.2.4
 

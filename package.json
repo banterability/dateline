@@ -2,7 +2,8 @@
   "name": "dateline",
   "version": "2.2.4",
   "description": "Associated Press style date & times for JavaScript & Node.js",
-  "main": "dateline.js",
+  "type": "module",
+  "exports": "./dateline.js",
   "scripts": {
     "prettier": "prettier --write '**/*.js'",
     "test": "vitest"
