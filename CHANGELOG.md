@@ -1,3 +1,7 @@
+## 3.1.0
+
+- Ship TypeScript type definitions with the package
+
 ## 3.0.0
 
 - **Breaking change**: Migrated from CJS to ESM
