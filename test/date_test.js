@@ -1,13 +1,4 @@
-import {
-  describe,
-  it,
-  expect,
-  beforeAll,
-  beforeEach,
-  afterAll,
-  afterEach,
-  vi,
-} from "vitest";
+import {describe, it, expect, beforeAll, afterAll, vi} from "vitest";
 
 import Dateline from "../dateline.js";
 
@@ -152,65 +143,6 @@ describe("#getAPDate", function () {
           expect(actual).toBe("Dec. 26, 2012");
         });
       });
-
-      describe('when "useDayNameForLastWeek" option is passed', function () {
-        beforeAll(function () {
-          vi.spyOn(console, "warn").mockImplementation(function () {});
-        });
-
-        afterAll(function () {
-          vi.restoreAllMocks();
-        });
-
-        it("shows the day of the week for one day ago", function () {
-          let actual = Dateline(new Date(2013, 0, 1)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Tuesday");
-        });
-
-        it("shows the day of the week for two days ago", function () {
-          let actual = Dateline(new Date(2012, 11, 31)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Monday");
-        });
-
-        it("shows the day of the week for three days ago", function () {
-          let actual = Dateline(new Date(2012, 11, 30)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Sunday");
-        });
-
-        it("shows the day of the week for four days ago", function () {
-          let actual = Dateline(new Date(2012, 11, 29)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Saturday");
-        });
-
-        it("shows the day of the week for five days ago", function () {
-          let actual = Dateline(new Date(2012, 11, 28)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Friday");
-        });
-
-        it("shows the day of the week for six days ago", function () {
-          let actual = Dateline(new Date(2012, 11, 27)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Thursday");
-        });
-
-        it("shows the date seven days ago", function () {
-          let actual = Dateline(new Date(2012, 11, 26)).getAPDate({
-            useDayNameForLastWeek: true,
-          });
-          expect(actual).toBe("Dec. 26, 2012");
-        });
-      });
     });
 
     describe("dates within a week in either direction", function () {
@@ -286,43 +218,6 @@ describe("#getAPDate", function () {
           });
           expect(actual).toBe("Jan. 9");
         });
-      });
-    });
-
-    describe('"useDayNameForLastWeek" deprecation warning', function () {
-      let warnSpy;
-
-      beforeEach(function () {
-        warnSpy = vi.spyOn(console, "warn").mockImplementation(function () {});
-      });
-
-      afterEach(function () {
-        warnSpy.mockRestore();
-      });
-
-      it("warns when the deprecated option is passed", function () {
-        Dateline(new Date(2013, 0, 1)).getAPDate({useDayNameForLastWeek: true});
-        expect(warnSpy).toHaveBeenCalledOnce();
-        expect(warnSpy.mock.calls[0][0]).toContain("useDayNameForLastWeek");
-        expect(warnSpy.mock.calls[0][0]).toContain("useDayNameWithinWeek");
-      });
-
-      it("warns on every call", function () {
-        let d = Dateline(new Date(2013, 0, 1));
-        d.getAPDate({useDayNameForLastWeek: true});
-        d.getAPDate({useDayNameForLastWeek: true});
-        d.getAPDate({useDayNameForLastWeek: true});
-        expect(warnSpy).toHaveBeenCalledTimes(3);
-      });
-
-      it("does not warn when the option is not passed", function () {
-        Dateline(new Date(2013, 0, 1)).getAPDate();
-        expect(warnSpy).not.toHaveBeenCalled();
-      });
-
-      it("does not warn when the replacement option is used", function () {
-        Dateline(new Date(2013, 0, 1)).getAPDate({useDayNameWithinWeek: true});
-        expect(warnSpy).not.toHaveBeenCalled();
       });
     });
   });

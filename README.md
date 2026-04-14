@@ -71,17 +71,6 @@ Dateline().getAPTime({includeMinutesAtTopOfHour: true});
 // -> '11:00 a.m.'
 ```
 
-- `includeMinutes` _(deprecated; use `includeMinutesAtTopOfHour`)_: Always include minutes, even at the top of the hour.
-
-  Passing `false` does not reliably opt out — at the top of the hour it still renders `:00`. Only omitting the option (or passing `undefined` / `null`) produces the AP default. Deprecated in v4; will be removed in v5. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
-
-```js
-// The current time is 11:00 a.m....
-
-Dateline().getAPTime({includeMinutes: true});
-// -> '11:00 a.m.'
-```
-
 - `suppressAmPm`: Drop the trailing `a.m.` / `p.m.` suffix.
 
   AP style omits the meridiem on the opening endpoint of a range — e.g. `"7-8 p.m."`, not `"7 p.m.-8 p.m."` — so callers composing ranges need a way to render a bare time. `midnight` and `noon` are unaffected.
@@ -147,20 +136,4 @@ Dateline(new Date(2009, 5, 23)).getAPDate({useDayNameWithinWeek: true});
 
 Dateline(new Date(2009, 5, 29)).getAPDate({useDayNameWithinWeek: true});
 // -> 'June 29'
-```
-
-- `useDayNameForLastWeek` _(deprecated; use `useDayNameWithinWeek`)_: Use the day of the week for dates in the last seven days.
-
-  Passing `false` does not reliably opt out — for any date within the last seven days it still renders the weekday name. Only omitting the option (or passing `undefined` / `null`) produces the default. Deprecated in v4; will be removed in v5. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
-
-```js
-// Today is June 22, 2009
-
-var myDate = new Date(2009, 5, 20);
-
-Dateline(myDate).getAPDate();
-// -> 'June 20'
-
-Dateline(myDate).getAPDate({useDayNameForLastWeek: true});
-// -> 'Saturday'
 ```
