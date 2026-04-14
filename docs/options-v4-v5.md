@@ -1,4 +1,4 @@
-# Updated options
+# Updated options in v4 & v5
 
 Dateline occasionally replaces options with better-named or corrected alternatives. This doc lists the changes and how to migrate. Runtime deprecation warnings link here.
 
