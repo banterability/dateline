@@ -10,9 +10,9 @@
 
 ### Deprecations
 
-- **Deprecated**: `includeMinutes` in favor of `includeMinutesAtTopOfHour`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+- **Deprecated**: `includeMinutes` in favor of `includeMinutesAtTopOfHour`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
 
-- **Deprecated**: `useDayNameForLastWeek` in favor of `useDayNameWithinWeek`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+- **Deprecated**: `useDayNameForLastWeek` in favor of `useDayNameWithinWeek`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
 
 ### Added
 

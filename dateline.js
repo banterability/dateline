@@ -144,7 +144,7 @@ function warnDeprecatedOption(oldName, newName) {
       oldName +
       '" is deprecated. Use "' +
       newName +
-      '" instead. See https://github.com/banterability/dateline/blob/main/docs/updatedOptions.md',
+      '" instead. See https://github.com/banterability/dateline/blob/main/docs/options-v4-v5.md',
   );
 }
 

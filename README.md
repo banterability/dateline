@@ -73,7 +73,7 @@ Dateline().getAPTime({includeMinutesAtTopOfHour: true});
 
 - `includeMinutes` _(deprecated; use `includeMinutesAtTopOfHour`)_: Always include minutes, even at the top of the hour.
 
-  Passing `false` does not reliably opt out — at the top of the hour it still renders `:00`. Only omitting the option (or passing `undefined` / `null`) produces the AP default. Deprecated in v4; will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+  Passing `false` does not reliably opt out — at the top of the hour it still renders `:00`. Only omitting the option (or passing `undefined` / `null`) produces the AP default. Deprecated in v4; will be removed in v5. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
 
 ```js
 // The current time is 11:00 a.m....
@@ -151,7 +151,7 @@ Dateline(new Date(2009, 5, 29)).getAPDate({useDayNameWithinWeek: true});
 
 - `useDayNameForLastWeek` _(deprecated; use `useDayNameWithinWeek`)_: Use the day of the week for dates in the last seven days.
 
-  Passing `false` does not reliably opt out — for any date within the last seven days it still renders the weekday name. Only omitting the option (or passing `undefined` / `null`) produces the default. Deprecated in v4; will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+  Passing `false` does not reliably opt out — for any date within the last seven days it still renders the weekday name. Only omitting the option (or passing `undefined` / `null`) produces the default. Deprecated in v4; will be removed in v5. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
 
 ```js
 // Today is June 22, 2009
