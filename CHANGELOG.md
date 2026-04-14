@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Added `includeMinutesAtTopOfHour` option to `getAPTime`. Replaces `includeMinutes` with a name that reflects its actual scope — it only affects top-of-hour rendering — and respects `false` as a real "off" position.
+
 - Added `useDayNameWithinWeek` option to `getAPDate`. Renders the weekday name for dates within a week of today in either direction, matching AP style.
 
 - Deprecated `useDayNameForLastWeek` in favor of `useDayNameWithinWeek`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.

@@ -57,7 +57,9 @@ moonWalk.getAPTime();
 
 Available options:
 
-- `includeMinutes`: Always include minutes, even at the top of the hour:
+- `includeMinutesAtTopOfHour`: Force `:00` at the top of the hour.
+
+  AP style omits the `:00` when referencing a time that lands on the hour, so the default renders `"2 p.m."` rather than `"2:00 p.m."`. Pass `true` to opt into the padded form. Special times (`midnight` and `noon`) are unaffected.
 
 ```js
 // The current time is 11:00 a.m....
@@ -65,6 +67,13 @@ Available options:
 Dateline().getAPTime();
 // -> '11 a.m.'
 
+Dateline().getAPTime({includeMinutesAtTopOfHour: true});
+// -> '11:00 a.m.'
+```
+
+- `includeMinutes`: Always include minutes, even at the top of the hour:
+
+```
 Dateline().getAPTime({includeMinutes: true});
 // -> '11:00 a.m.'
 ```
