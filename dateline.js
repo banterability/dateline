@@ -110,7 +110,10 @@ function showMinutes(minutes, options) {
 // # Date Helpers
 
 function showYear(year, options) {
-  return year === new Date().getFullYear() && options.includeYear == null;
+  if (options.includeYear == null) {
+    return year === new Date().getFullYear();
+  }
+  return !options.includeYear;
 }
 
 function getDayOfWeek(dateObj) {

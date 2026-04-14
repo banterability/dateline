@@ -58,7 +58,7 @@ describe("#getAPDate", function () {
       });
     });
 
-    describe('always show the year when "includeYear" option is passed', function () {
+    describe('always show the year when "includeYear" is true', function () {
       it("shows year for past years", function () {
         let actual = Dateline(new Date(2012, 11, 31)).getAPDate({
           includeYear: true,
@@ -78,6 +78,29 @@ describe("#getAPDate", function () {
           includeYear: true,
         });
         expect(actual).toBe("Dec. 31, 2014");
+      });
+    });
+
+    describe('always hide the year when "includeYear" is false', function () {
+      it("hides year for past years", function () {
+        let actual = Dateline(new Date(2012, 11, 31)).getAPDate({
+          includeYear: false,
+        });
+        expect(actual).toBe("Dec. 31");
+      });
+
+      it("hides year for the current year", function () {
+        let actual = Dateline(new Date(2013, 11, 31)).getAPDate({
+          includeYear: false,
+        });
+        expect(actual).toBe("Dec. 31");
+      });
+
+      it("hides year for future years", function () {
+        let actual = Dateline(new Date(2014, 11, 31)).getAPDate({
+          includeYear: false,
+        });
+        expect(actual).toBe("Dec. 31");
       });
     });
   });
