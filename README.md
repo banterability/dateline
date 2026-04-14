@@ -89,6 +89,8 @@ Dateline(new Date(2013, 7, 7, 19, 1)).getAPTime({suppressAmPm: true});
 **`#getAPDate(options)`** returns an AP-style date string:
 
 ```js
+// Today is April 29, 2014
+
 newYears.getAPDate();
 // -> 'Jan. 1'
 
@@ -118,9 +120,9 @@ Dateline(new Date(2012, 7, 28)).getAPDate({includeYear: false});
 // -> 'Aug. 28'
 ```
 
-- `useDayNameWithinWeek`: Use the day of the week for dates within seven days of today, in either direction.
+- `useDayNameWithinWeek`: When `true`, render dates within a week of today as weekday names.
 
-  Per AP style, weekday names stand in for the date within a week of the current date. The fallback kicks in at exactly seven days out in either direction — those dates render normally.
+  Dates less than seven days away in either direction render as `'Monday'`, `'Tuesday'`, etc. Dates further out are unaffected — they render as the normal month-and-day. Per AP style, weekday names stand in for the date within a week of the current date.
 
 ```js
 // Today is Monday, June 22, 2009
