@@ -49,5 +49,70 @@ describe("#getAPTime", function () {
         expect(actual).toBe("noon");
       });
     });
+
+    describe('"includeMinutesAtTopOfHour" option', function () {
+      describe("at the top of the hour", function () {
+        it("suppresses minutes when the option is missing", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 0)).getAPTime();
+          expect(actual).toBe("7 a.m.");
+        });
+
+        it("renders minutes when the option is true", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 0)).getAPTime({
+            includeMinutesAtTopOfHour: true,
+          });
+          expect(actual).toBe("7:00 a.m.");
+        });
+
+        it("suppresses minutes when the option is false", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 0)).getAPTime({
+            includeMinutesAtTopOfHour: false,
+          });
+          expect(actual).toBe("7 a.m.");
+        });
+      });
+
+      describe("mid-hour", function () {
+        it("renders minutes when the option is missing", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime();
+          expect(actual).toBe("7:01 a.m.");
+        });
+
+        it("renders minutes when the option is true", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime({
+            includeMinutesAtTopOfHour: true,
+          });
+          expect(actual).toBe("7:01 a.m.");
+        });
+
+        it("renders minutes when the option is false", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime({
+            includeMinutesAtTopOfHour: false,
+          });
+          expect(actual).toBe("7:01 a.m.");
+        });
+      });
+
+      describe("at noon", function () {
+        it('returns "noon" when the option is missing', function () {
+          let actual = Dateline(new Date(2013, 0, 1, 12, 0)).getAPTime();
+          expect(actual).toBe("noon");
+        });
+
+        it('returns "noon" when the option is true', function () {
+          let actual = Dateline(new Date(2013, 0, 1, 12, 0)).getAPTime({
+            includeMinutesAtTopOfHour: true,
+          });
+          expect(actual).toBe("noon");
+        });
+
+        it('returns "noon" when the option is false', function () {
+          let actual = Dateline(new Date(2013, 0, 1, 12, 0)).getAPTime({
+            includeMinutesAtTopOfHour: false,
+          });
+          expect(actual).toBe("noon");
+        });
+      });
+    });
   });
 });

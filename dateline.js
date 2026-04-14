@@ -104,6 +104,9 @@ function isTopOfHour(minutes) {
 }
 
 function showMinutes(minutes, options) {
+  if (options.includeMinutesAtTopOfHour != null) {
+    return isTopOfHour(minutes) && !options.includeMinutesAtTopOfHour;
+  }
   return isTopOfHour(minutes) && options.includeMinutes == null;
 }
 
