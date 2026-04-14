@@ -51,14 +51,12 @@ let Dateline = function (dateObj) {
 
     let hour = formatHours(hours);
 
-    // Don't show minutes at the top of the hour by default
     if (showMinutes(minutes, options)) {
-      return hour + timeOfDay;
+      let minute = formatMinutes(minutes);
+      return hour + ":" + minute + timeOfDay;
     }
 
-    let minute = formatMinutes(minutes);
-
-    return hour + ":" + minute + timeOfDay;
+    return hour + timeOfDay;
   };
 
   dateObj.getAPDate = function (options) {
@@ -75,10 +73,9 @@ let Dateline = function (dateObj) {
     if (useDayName(dateObj, options)) {
       return getDayOfWeek(dateObj);
     } else if (showYear(year, options)) {
-      return monthName + " " + date;
-    } else {
       return monthName + " " + date + ", " + year;
     }
+    return monthName + " " + date;
   };
 
   return dateObj;
@@ -107,22 +104,23 @@ function isTopOfHour(minutes) {
 
 function showMinutes(minutes, options) {
   if (options.includeMinutesAtTopOfHour != null) {
-    return isTopOfHour(minutes) && !options.includeMinutesAtTopOfHour;
+    if (!isTopOfHour(minutes)) return true;
+    return !!options.includeMinutesAtTopOfHour;
   }
   if (options.includeMinutes != null) {
     warnDeprecatedOption("includeMinutes", "includeMinutesAtTopOfHour");
-    return isTopOfHour(minutes) && options.includeMinutes == null;
+    return true;
   }
-  return isTopOfHour(minutes);
+  return !isTopOfHour(minutes);
 }
 
 // # Date Helpers
 
 function showYear(year, options) {
   if (options.includeYear == null) {
-    return year === new Date().getFullYear();
+    return year !== new Date().getFullYear();
   }
-  return !options.includeYear;
+  return !!options.includeYear;
 }
 
 function getDayOfWeek(dateObj) {
