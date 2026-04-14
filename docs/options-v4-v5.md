@@ -1,28 +1,36 @@
 # Updated options in v4 & v5
 
-Dateline occasionally replaces options with better-named or corrected alternatives. This doc lists the changes and how to migrate. Runtime deprecation warnings link here.
+Two options have unclear names and unintuitive behavior. This document describes the issues and how to migrate.
 
-## `includeMinutes` → `includeMinutesAtTopOfHour`
+In v4, both options emit a runtime warning pointing at this document.
+
+In v5, both options are removed and have no effect when passed.
+
+## ⚠️ `getAPTime » includeMinutes`
 
 Status: deprecated in v4, removed in v5.
 
 ### Why
 
-Two problems with `includeMinutes`:
+1. _Bug:_ `{includeMinutes: false}` doesn't behave as a boolean "off" and has the same result as passing `true`. Only omitting the option or passing `undefined` / `null` preserves the default behavior.
+2. _Gotcha:_ The name oversells what it does. It only affects rendering at the top of the hour. Mid-hour minutes always render regardless of the option.
 
-1. The name oversells its scope. It only affects rendering at the top of the hour. Mid-hour minutes always render regardless of the option.
-2. `{includeMinutes: false}` does **not** behave as a boolean "off." At the top of the hour it forces `:00` on — the same result as `{includeMinutes: true}`. Only omitting the option (or passing `undefined` / `null`) triggers the AP default.
+Rather than patch in place, the option has been replaced by `includeMinutesAtTopOfHour`, whose name better reflects what it does.
 
-The bug is being left in place rather than fixed, to avoid silently changing behavior for anyone passing `false` deliberately. The replacement option is a clean break.
+### Migrating to `getAPTime » includeMinutesAtTopOfHour`
 
-### Migrate
+Available beginning in v4.0.0.
 
 ```js
+// It is 11:00 a.m.
+
 // before
-Dateline(date).getAPTime({includeMinutes: true});
+Dateline().getAPTime({includeMinutes: true});
+// -> '11:00 a.m.'
 
 // after
-Dateline(date).getAPTime({includeMinutesAtTopOfHour: true});
+Dateline().getAPTime({includeMinutesAtTopOfHour: true});
+// -> '11:00 a.m.'
 ```
 
 `includeMinutesAtTopOfHour` behaves as a normal boolean:
@@ -30,29 +38,39 @@ Dateline(date).getAPTime({includeMinutesAtTopOfHour: true});
 - truthy → render `:00` at the top of the hour (`"7:00 a.m."`).
 - falsy or omitted → suppress `:00` at the top of the hour (`"7 a.m."`, the AP default).
 
-Mid-hour renderings are unaffected either way. `midnight` and `noon` are also unaffected — those literals always win.
+Mid-hour renderings (e.g. `7:01 a.m.`) are unaffected either way. `midnight` and `noon` are also unaffected.
 
-## `useDayNameForLastWeek` → `useDayNameWithinWeek`
+## ⚠️ `getAPDate » useDayNameForLastWeek`
 
 Status: deprecated in v4, removed in v5.
 
 ### Why
 
-Two problems with `useDayNameForLastWeek`:
+1. _Bug:_ `{useDayNameForLastWeek: false}` doesn't behave as a boolean "off" and has the same result as passing `true`. Only omitting the option or passing `undefined` / `null` preserves the default behavior.
+2. _New behavior:_ `useDayNameWithinWeek` covers past and future dates within the window, matching AP style; the old option was past-only.
 
-1. The name scopes to the past, but AP style uses weekday names in both directions — within seven days before or after the current date.
-2. `{useDayNameForLastWeek: false}` does **not** behave as a boolean "off." For any date within the last seven days it still renders the weekday name — the same result as `{useDayNameForLastWeek: true}`. Only omitting the option (or passing `undefined` / `null`) triggers the default.
+Rather than patch in place, the option has been replaced by `useDayNameWithinWeek`, whose name better reflects what it does.
 
-The bug is being left in place rather than fixed, to avoid silently changing behavior for anyone passing `false` deliberately. The replacement option is a clean break and covers the full AP-compliant window.
+### Migrating to `getAPDate » useDayNameWithinWeek`
 
-### Migrate
+Available beginning in v4.0.0.
 
 ```js
+// Today is Tuesday, April 14, 2026
+let yesterday = new Date(2026, 3, 13);
+let tomorrow = new Date(2026, 3, 15);
+
 // before
-Dateline(date).getAPDate({useDayNameForLastWeek: true});
+Dateline(yesterday).getAPDate({useDayNameForLastWeek: true});
+// -> 'Monday'
+Dateline(tomorrow).getAPDate({useDayNameForLastWeek: true});
+// -> 'April 15'
 
 // after
-Dateline(date).getAPDate({useDayNameWithinWeek: true});
+Dateline(yesterday).getAPDate({useDayNameWithinWeek: true});
+// -> 'Monday'
+Dateline(tomorrow).getAPDate({useDayNameWithinWeek: true});
+// -> 'Wednesday'
 ```
 
 `useDayNameWithinWeek` behaves as a normal boolean:
