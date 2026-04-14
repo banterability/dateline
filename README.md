@@ -82,6 +82,21 @@ Dateline().getAPTime({includeMinutes: true});
 // -> '11:00 a.m.'
 ```
 
+- `suppressAmPm`: Drop the trailing `a.m.` / `p.m.` suffix.
+
+  AP style omits the meridiem on the opening endpoint of a range — e.g. `"7-8 p.m."`, not `"7 p.m.-8 p.m."` — so callers composing ranges need a way to render a bare time. `midnight` and `noon` are unaffected.
+
+```js
+let start = Dateline(new Date(2013, 7, 7, 19, 0));
+let end = Dateline(new Date(2013, 7, 7, 20, 0));
+
+start.getAPTime({suppressAmPm: true}) + "-" + end.getAPTime();
+// -> '7-8 p.m.'
+
+Dateline(new Date(2013, 7, 7, 19, 1)).getAPTime({suppressAmPm: true});
+// -> '7:01'
+```
+
 **`#getAPDate(options)`** returns an AP-style date string:
 
 ```js

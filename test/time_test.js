@@ -132,6 +132,50 @@ describe("#getAPTime", function () {
       });
     });
 
+    describe('"suppressAmPm" option', function () {
+      describe("mid-hour", function () {
+        it("renders the meridiem when the option is missing", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime();
+          expect(actual).toBe("7:01 a.m.");
+        });
+
+        it("drops the meridiem when the option is true", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime({
+            suppressAmPm: true,
+          });
+          expect(actual).toBe("7:01");
+        });
+
+        it("renders the meridiem when the option is false", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime({
+            suppressAmPm: false,
+          });
+          expect(actual).toBe("7:01 a.m.");
+        });
+      });
+
+      describe("at noon", function () {
+        it('returns "noon" when the option is missing', function () {
+          let actual = Dateline(new Date(2013, 0, 1, 12, 0)).getAPTime();
+          expect(actual).toBe("noon");
+        });
+
+        it('returns "noon" when the option is true', function () {
+          let actual = Dateline(new Date(2013, 0, 1, 12, 0)).getAPTime({
+            suppressAmPm: true,
+          });
+          expect(actual).toBe("noon");
+        });
+
+        it('returns "noon" when the option is false', function () {
+          let actual = Dateline(new Date(2013, 0, 1, 12, 0)).getAPTime({
+            suppressAmPm: false,
+          });
+          expect(actual).toBe("noon");
+        });
+      });
+    });
+
     describe('"includeMinutes" deprecation warning', function () {
       let warnSpy;
 
