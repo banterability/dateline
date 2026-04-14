@@ -99,6 +99,61 @@ describe("README", function () {
             "Aug. 28, 2014",
           );
         });
+
+        it("includes the year for dates outside the current year", function () {
+          expect(Dateline(new Date(2012, 7, 28)).getAPDate()).toBe(
+            "Aug. 28, 2012",
+          );
+        });
+
+        it("omits the year for dates outside the current year if option is passed", function () {
+          expect(
+            Dateline(new Date(2012, 7, 28)).getAPDate({includeYear: false}),
+          ).toBe("Aug. 28");
+        });
+      });
+
+      describe('"useDayNameWithinWeek" option', function () {
+        beforeAll(function () {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(2009, 5, 22));
+        });
+
+        afterAll(function () {
+          vi.useRealTimers();
+        });
+
+        it("uses the day name for yesterday", function () {
+          expect(
+            Dateline(new Date(2009, 5, 21)).getAPDate({
+              useDayNameWithinWeek: true,
+            }),
+          ).toBe("Sunday");
+        });
+
+        it("uses the day name for today", function () {
+          expect(
+            Dateline(new Date(2009, 5, 22)).getAPDate({
+              useDayNameWithinWeek: true,
+            }),
+          ).toBe("Monday");
+        });
+
+        it("uses the day name for tomorrow", function () {
+          expect(
+            Dateline(new Date(2009, 5, 23)).getAPDate({
+              useDayNameWithinWeek: true,
+            }),
+          ).toBe("Tuesday");
+        });
+
+        it("falls back to the formatted date outside the week window", function () {
+          expect(
+            Dateline(new Date(2009, 5, 29)).getAPDate({
+              useDayNameWithinWeek: true,
+            }),
+          ).toBe("June 29");
+        });
       });
 
       describe('"useDayNameForLastWeek" option', function () {
@@ -107,18 +162,20 @@ describe("README", function () {
         beforeAll(function () {
           vi.useFakeTimers();
           vi.setSystemTime(new Date(2009, 5, 22));
+          vi.spyOn(console, "warn").mockImplementation(function () {});
           myDate = new Date(2009, 5, 20);
         });
 
         afterAll(function () {
           vi.useRealTimers();
+          vi.restoreAllMocks();
         });
 
-        it("omits the year for dates in the current year", function () {
+        it("renders the formatted date by default", function () {
           expect(Dateline(myDate).getAPDate()).toBe("June 20");
         });
 
-        it("includes the year for dates in the current year if option is passed", function () {
+        it("uses the day name if option is passed", function () {
           expect(
             Dateline(myDate).getAPDate({useDayNameForLastWeek: true}),
           ).toBe("Saturday");

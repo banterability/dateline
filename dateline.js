@@ -124,7 +124,21 @@ function useDayName(dateObj, options) {
   if (options.useDayNameWithinWeek != null) {
     return options.useDayNameWithinWeek && withinAWeek(dateObj);
   }
-  return options.useDayNameForLastWeek != null && withinSevenDays(dateObj);
+  if (options.useDayNameForLastWeek != null) {
+    warnDeprecatedOption("useDayNameForLastWeek", "useDayNameWithinWeek");
+    return withinSevenDays(dateObj);
+  }
+  return false;
+}
+
+function warnDeprecatedOption(oldName, newName) {
+  console.warn(
+    'dateline: "' +
+      oldName +
+      '" is deprecated. Use "' +
+      newName +
+      '" instead. See https://github.com/banterability/dateline/blob/main/docs/updatedOptions.md',
+  );
 }
 
 function withinSevenDays(dateObj) {
