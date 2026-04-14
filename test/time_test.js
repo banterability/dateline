@@ -133,6 +133,27 @@ describe("#getAPTime", function () {
     });
 
     describe('"suppressAmPm" option', function () {
+      describe("at the top of the hour", function () {
+        it("renders the meridiem when the option is missing", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 0)).getAPTime();
+          expect(actual).toBe("7 a.m.");
+        });
+
+        it("drops the meridiem when the option is true", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 0)).getAPTime({
+            suppressAmPm: true,
+          });
+          expect(actual).toBe("7");
+        });
+
+        it("renders the meridiem when the option is false", function () {
+          let actual = Dateline(new Date(2013, 7, 7, 7, 0)).getAPTime({
+            suppressAmPm: false,
+          });
+          expect(actual).toBe("7 a.m.");
+        });
+      });
+
       describe("mid-hour", function () {
         it("renders the meridiem when the option is missing", function () {
           let actual = Dateline(new Date(2013, 7, 7, 7, 1)).getAPTime();

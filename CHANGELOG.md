@@ -18,7 +18,7 @@
 
 - Added `suppressAmPm` option to `getAPTime`. Drops the trailing `a.m.` / `p.m.` suffix so callers can compose AP-style time ranges (e.g. `"7-8 p.m."`). `midnight` and `noon` literals are unaffected.
 
-- Added `includeMinutesAtTopOfHour` option to `getAPTime`. Replaces `includeMinutes` with a name that reflects its actual scope — it only affects top-of-hour rendering — and respects `false` as a real "off" position.
+- Added `includeMinutesAtTopOfHour` option to `getAPTime`. Replaces `includeMinutes` with a name that reflects its actual scope — it only affects top-of-hour rendering — and fixes the `false`-acts-like-`true` bug in the old option.
 
 - Added `useDayNameWithinWeek` option to `getAPDate`. Renders the weekday name for dates within a week of today in either direction, matching AP style.
 
