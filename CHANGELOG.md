@@ -1,6 +1,6 @@
-## Unreleased
+## 5.0.0
 
-### Removed
+### Breaking changes
 
 - **Removed**: `includeMinutes` option on `getAPTime`. Deprecated in v4; replaced by `includeMinutesAtTopOfHour`. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
 
