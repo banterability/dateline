@@ -46,6 +46,45 @@ describe("README", function () {
         expect(moonWalk.getAPTime()).toBe("9:56 p.m.");
       });
 
+      describe('"includeMinutesAtTopOfHour" option', function () {
+        beforeAll(function () {
+          vi.useFakeTimers();
+          vi.setSystemTime(new Date(2016, 3, 20, 11, 0));
+        });
+
+        afterAll(function () {
+          vi.useRealTimers();
+        });
+
+        it("omits minutes at the top of the hour by default", function () {
+          expect(Dateline().getAPTime()).toBe("11 a.m.");
+        });
+
+        it("renders minutes at the top of the hour if option is passed", function () {
+          expect(Dateline().getAPTime({includeMinutesAtTopOfHour: true})).toBe(
+            "11:00 a.m.",
+          );
+        });
+      });
+
+      describe('"suppressAmPm" option', function () {
+        it("drops the meridiem when composing a range", function () {
+          let start = Dateline(new Date(2013, 7, 7, 19, 0));
+          let end = Dateline(new Date(2013, 7, 7, 20, 0));
+          expect(
+            start.getAPTime({suppressAmPm: true}) + "-" + end.getAPTime(),
+          ).toBe("7-8 p.m.");
+        });
+
+        it("drops the meridiem mid-hour", function () {
+          expect(
+            Dateline(new Date(2013, 7, 7, 19, 1)).getAPTime({
+              suppressAmPm: true,
+            }),
+          ).toBe("7:01");
+        });
+      });
+
       describe('"includeMinutes" option', function () {
         beforeAll(function () {
           vi.useFakeTimers();
@@ -56,10 +95,6 @@ describe("README", function () {
         afterAll(function () {
           vi.useRealTimers();
           vi.restoreAllMocks();
-        });
-
-        it("omits minutes at the top of the hour", function () {
-          expect(Dateline().getAPTime()).toBe("11 a.m.");
         });
 
         it("includes minutes at the top of the hour if option is passed", function () {

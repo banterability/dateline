@@ -1,9 +1,14 @@
 export interface APTimeOptions {
+  includeMinutesAtTopOfHour?: boolean;
+  suppressAmPm?: boolean;
+  /** @deprecated Use `includeMinutesAtTopOfHour`. Will be removed in v5. */
   includeMinutes?: boolean;
 }
 
 export interface APDateOptions {
   includeYear?: boolean;
+  useDayNameWithinWeek?: boolean;
+  /** @deprecated Use `useDayNameWithinWeek`. Will be removed in v5. */
   useDayNameForLastWeek?: boolean;
 }
 

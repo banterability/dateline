@@ -1,20 +1,26 @@
 ## Unreleased
 
-- Added `suppressAmPm` option to `getAPTime`. Drops the trailing `a.m.` / `p.m.` suffix so callers can compose AP-style time ranges (e.g. `"7-8 p.m."`). `midnight` and `noon` literals are unaffected.
-
-- Added `includeMinutesAtTopOfHour` option to `getAPTime`. Replaces `includeMinutes` with a name that reflects its actual scope — it only affects top-of-hour rendering — and respects `false` as a real "off" position.
-
-- Deprecated `includeMinutes` in favor of `includeMinutesAtTopOfHour`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
-
-- Added `useDayNameWithinWeek` option to `getAPDate`. Renders the weekday name for dates within a week of today in either direction, matching AP style.
-
-- Deprecated `useDayNameForLastWeek` in favor of `useDayNameWithinWeek`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+### Breaking changes
 
 - **Breaking change**: `{includeYear: false}` now hides the year in every case.
 
   Previously, passing `false` was not a reliable way to hide the year: it behaved the same as `true` for the current year, and was silently ignored for past or future years. The option is now a symmetric counterpart to `{includeYear: true}`.
 
   The default behavior when the option is not present is unchanged: hide the year when it matches the current year, and show it otherwise.
+
+### Deprecations
+
+- **Deprecated**: `includeMinutes` in favor of `includeMinutesAtTopOfHour`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+
+- **Deprecated**: `useDayNameForLastWeek` in favor of `useDayNameWithinWeek`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+
+### Added
+
+- Added `suppressAmPm` option to `getAPTime`. Drops the trailing `a.m.` / `p.m.` suffix so callers can compose AP-style time ranges (e.g. `"7-8 p.m."`). `midnight` and `noon` literals are unaffected.
+
+- Added `includeMinutesAtTopOfHour` option to `getAPTime`. Replaces `includeMinutes` with a name that reflects its actual scope — it only affects top-of-hour rendering — and respects `false` as a real "off" position.
+
+- Added `useDayNameWithinWeek` option to `getAPDate`. Renders the weekday name for dates within a week of today in either direction, matching AP style.
 
 ## 3.1.0
 
