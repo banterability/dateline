@@ -101,6 +101,26 @@ Dateline(new Date(2012, 7, 28)).getAPDate({includeYear: false});
 // -> 'Aug. 28'
 ```
 
+- `useDayNameWithinWeek`: Use the day of the week for dates within seven days of today, in either direction.
+
+  Per AP style, weekday names stand in for the date within a week of the current date. The fallback kicks in at exactly seven days out in either direction — those dates render normally.
+
+```js
+// Today is Wednesday, January 2, 2013
+
+Dateline(new Date(2013, 0, 1)).getAPDate({useDayNameWithinWeek: true});
+// -> 'Tuesday'
+
+Dateline(new Date(2013, 0, 2)).getAPDate({useDayNameWithinWeek: true});
+// -> 'Wednesday'
+
+Dateline(new Date(2013, 0, 3)).getAPDate({useDayNameWithinWeek: true});
+// -> 'Thursday'
+
+Dateline(new Date(2013, 0, 9)).getAPDate({useDayNameWithinWeek: true});
+// -> 'Jan. 9'
+```
+
 - `useDayNameForLastWeek`: Use the day of the week for dates in the last seven days:
 
 ```js
