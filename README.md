@@ -71,9 +71,13 @@ Dateline().getAPTime({includeMinutesAtTopOfHour: true});
 // -> '11:00 a.m.'
 ```
 
-- `includeMinutes`: Always include minutes, even at the top of the hour:
+- `includeMinutes` _(deprecated; use `includeMinutesAtTopOfHour`)_: Always include minutes, even at the top of the hour.
 
-```
+  Passing `false` does not reliably opt out — at the top of the hour it still renders `:00`. Only omitting the option (or passing `undefined` / `null`) produces the AP default. Deprecated in v4; will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+
+```js
+// The current time is 11:00 a.m....
+
 Dateline().getAPTime({includeMinutes: true});
 // -> '11:00 a.m.'
 ```

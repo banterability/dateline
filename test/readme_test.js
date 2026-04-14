@@ -50,10 +50,12 @@ describe("README", function () {
         beforeAll(function () {
           vi.useFakeTimers();
           vi.setSystemTime(new Date(2016, 3, 20, 11, 0));
+          vi.spyOn(console, "warn").mockImplementation(function () {});
         });
 
         afterAll(function () {
           vi.useRealTimers();
+          vi.restoreAllMocks();
         });
 
         it("omits minutes at the top of the hour", function () {

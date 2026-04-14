@@ -2,6 +2,36 @@
 
 Dateline occasionally replaces options with better-named or corrected alternatives. This doc lists the changes and how to migrate. Runtime deprecation warnings link here.
 
+## `includeMinutes` → `includeMinutesAtTopOfHour`
+
+Status: deprecated in v4, removed in v5.
+
+### Why
+
+Two problems with `includeMinutes`:
+
+1. The name oversells its scope. It only affects rendering at the top of the hour. Mid-hour minutes always render regardless of the option.
+2. `{includeMinutes: false}` does **not** behave as a boolean "off." At the top of the hour it forces `:00` on — the same result as `{includeMinutes: true}`. Only omitting the option (or passing `undefined` / `null`) triggers the AP default.
+
+The bug is being left in place rather than fixed, to avoid silently changing behavior for anyone passing `false` deliberately. The replacement option is a clean break.
+
+### Migrate
+
+```js
+// before
+Dateline(date).getAPTime({includeMinutes: true});
+
+// after
+Dateline(date).getAPTime({includeMinutesAtTopOfHour: true});
+```
+
+`includeMinutesAtTopOfHour` behaves as a normal boolean:
+
+- truthy → render `:00` at the top of the hour (`"7:00 a.m."`).
+- falsy or omitted → suppress `:00` at the top of the hour (`"7 a.m."`, the AP default).
+
+Mid-hour renderings are unaffected either way. `midnight` and `noon` are also unaffected — those literals always win.
+
 ## `useDayNameForLastWeek` → `useDayNameWithinWeek`
 
 Status: deprecated in v4, removed in v5.
