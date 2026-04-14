@@ -121,10 +121,18 @@ function getDayOfWeek(dateObj) {
 }
 
 function useDayName(dateObj, options) {
+  if (options.useDayNameWithinWeek != null) {
+    return options.useDayNameWithinWeek && withinAWeek(dateObj);
+  }
   return options.useDayNameForLastWeek != null && withinSevenDays(dateObj);
 }
 
 function withinSevenDays(dateObj) {
   let diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
   return -7 < diffInDays && diffInDays < 0;
+}
+
+function withinAWeek(dateObj) {
+  let diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
+  return -7 < diffInDays && diffInDays < 7;
 }

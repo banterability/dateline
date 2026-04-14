@@ -195,5 +195,81 @@ describe("#getAPDate", function () {
         });
       });
     });
+
+    describe("dates within a week in either direction", function () {
+      describe('when "useDayNameWithinWeek" is true', function () {
+        it("shows the day of the week for one day ago", function () {
+          let actual = Dateline(new Date(2013, 0, 1)).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Tuesday");
+        });
+
+        it("shows the day of the week for today", function () {
+          let actual = Dateline(new Date(2013, 0, 2)).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Wednesday");
+        });
+
+        it("shows the day of the week for one day ahead", function () {
+          let actual = Dateline(new Date(2013, 0, 3)).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Thursday");
+        });
+
+        it("falls back to the date exactly seven days ago", function () {
+          let actual = Dateline(new Date(2012, 11, 26)).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Dec. 26, 2012");
+        });
+
+        it("falls back to the date exactly seven days ahead", function () {
+          let actual = Dateline(new Date(2013, 0, 9)).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Jan. 9");
+        });
+      });
+
+      describe('when "useDayNameWithinWeek" is false', function () {
+        it("renders the date one day ago", function () {
+          let actual = Dateline(new Date(2013, 0, 1)).getAPDate({
+            useDayNameWithinWeek: false,
+          });
+          expect(actual).toBe("Jan. 1");
+        });
+
+        it("renders the date today", function () {
+          let actual = Dateline(new Date(2013, 0, 2)).getAPDate({
+            useDayNameWithinWeek: false,
+          });
+          expect(actual).toBe("Jan. 2");
+        });
+
+        it("renders the date one day ahead", function () {
+          let actual = Dateline(new Date(2013, 0, 3)).getAPDate({
+            useDayNameWithinWeek: false,
+          });
+          expect(actual).toBe("Jan. 3");
+        });
+
+        it("renders the date exactly seven days ago", function () {
+          let actual = Dateline(new Date(2012, 11, 26)).getAPDate({
+            useDayNameWithinWeek: false,
+          });
+          expect(actual).toBe("Dec. 26, 2012");
+        });
+
+        it("renders the date exactly seven days ahead", function () {
+          let actual = Dateline(new Date(2013, 0, 9)).getAPDate({
+            useDayNameWithinWeek: false,
+          });
+          expect(actual).toBe("Jan. 9");
+        });
+      });
+    });
   });
 });
