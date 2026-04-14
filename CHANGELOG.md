@@ -2,6 +2,8 @@
 
 - Added `useDayNameWithinWeek` option to `getAPDate`. Renders the weekday name for dates within a week of today in either direction, matching AP style.
 
+- Deprecated `useDayNameForLastWeek` in favor of `useDayNameWithinWeek`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
+
 - **Breaking change**: `{includeYear: false}` now hides the year in every case.
 
   Previously, passing `false` was not a reliable way to hide the year: it behaved the same as `true` for the current year, and was silently ignored for past or future years. The option is now a symmetric counterpart to `{includeYear: true}`.

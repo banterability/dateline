@@ -106,22 +106,24 @@ Dateline(new Date(2012, 7, 28)).getAPDate({includeYear: false});
   Per AP style, weekday names stand in for the date within a week of the current date. The fallback kicks in at exactly seven days out in either direction — those dates render normally.
 
 ```js
-// Today is Wednesday, January 2, 2013
+// Today is Monday, June 22, 2009
 
-Dateline(new Date(2013, 0, 1)).getAPDate({useDayNameWithinWeek: true});
+Dateline(new Date(2009, 5, 21)).getAPDate({useDayNameWithinWeek: true});
+// -> 'Sunday'
+
+Dateline(new Date(2009, 5, 22)).getAPDate({useDayNameWithinWeek: true});
+// -> 'Monday'
+
+Dateline(new Date(2009, 5, 23)).getAPDate({useDayNameWithinWeek: true});
 // -> 'Tuesday'
 
-Dateline(new Date(2013, 0, 2)).getAPDate({useDayNameWithinWeek: true});
-// -> 'Wednesday'
-
-Dateline(new Date(2013, 0, 3)).getAPDate({useDayNameWithinWeek: true});
-// -> 'Thursday'
-
-Dateline(new Date(2013, 0, 9)).getAPDate({useDayNameWithinWeek: true});
-// -> 'Jan. 9'
+Dateline(new Date(2009, 5, 29)).getAPDate({useDayNameWithinWeek: true});
+// -> 'June 29'
 ```
 
-- `useDayNameForLastWeek`: Use the day of the week for dates in the last seven days:
+- `useDayNameForLastWeek` _(deprecated; use `useDayNameWithinWeek`)_: Use the day of the week for dates in the last seven days.
+
+  Passing `false` does not reliably opt out — for any date within the last seven days it still renders the weekday name. Only omitting the option (or passing `undefined` / `null`) produces the default. Deprecated in v4; will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.
 
 ```js
 // Today is June 22, 2009
