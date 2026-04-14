@@ -1,5 +1,7 @@
 ## Unreleased
 
+- Added `suppressAmPm` option to `getAPTime`. Drops the trailing `a.m.` / `p.m.` suffix so callers can compose AP-style time ranges (e.g. `"7-8 p.m."`). `midnight` and `noon` literals are unaffected.
+
 - Added `includeMinutesAtTopOfHour` option to `getAPTime`. Replaces `includeMinutes` with a name that reflects its actual scope — it only affects top-of-hour rendering — and respects `false` as a real "off" position.
 
 - Deprecated `includeMinutes` in favor of `includeMinutesAtTopOfHour`. Passing the old option emits a `console.warn`. The old option still works for now but will be removed in v5. See [`docs/updatedOptions.md`](docs/updatedOptions.md) for the migration.

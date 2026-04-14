@@ -45,18 +45,20 @@ let Dateline = function (dateObj) {
       return "noon";
     }
 
-    let timeOfDay = hours < 12 ? "a.m." : "p.m.";
+    let timeOfDay = options.suppressAmPm
+      ? ""
+      : " " + (hours < 12 ? "a.m." : "p.m.");
 
     let hour = formatHours(hours);
 
     // Don't show minutes at the top of the hour by default
     if (showMinutes(minutes, options)) {
-      return hour + " " + timeOfDay;
+      return hour + timeOfDay;
     }
 
     let minute = formatMinutes(minutes);
 
-    return hour + ":" + minute + " " + timeOfDay;
+    return hour + ":" + minute + timeOfDay;
   };
 
   dateObj.getAPDate = function (options) {
