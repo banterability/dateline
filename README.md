@@ -81,16 +81,24 @@ moonWalk.getAPDate();
 
 Available options:
 
-- `includeYear`: Always include the year, even if it matches the current one:
+- `includeYear`: Force the year to be included or excluded.
+
+  The default hides the year when it matches the current year, and shows it otherwise. Pass `true` to force the year on, or `false` to force it off — both override the default regardless of the date.
 
 ```js
-// Today is August 28, 2014...
+// Today is August 28, 2014
 
 Dateline().getAPDate();
 // -> 'Aug. 28'
 
+Dateline(new Date(2012, 7, 28)).getAPDate();
+// -> 'Aug. 28, 2012'
+
 Dateline().getAPDate({includeYear: true});
 // -> 'Aug. 28, 2014'
+
+Dateline(new Date(2012, 7, 28)).getAPDate({includeYear: false});
+// -> 'Aug. 28'
 ```
 
 - `useDayNameForLastWeek`: Use the day of the week for dates in the last seven days:
