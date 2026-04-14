@@ -107,7 +107,11 @@ function showMinutes(minutes, options) {
   if (options.includeMinutesAtTopOfHour != null) {
     return isTopOfHour(minutes) && !options.includeMinutesAtTopOfHour;
   }
-  return isTopOfHour(minutes) && options.includeMinutes == null;
+  if (options.includeMinutes != null) {
+    warnDeprecatedOption("includeMinutes", "includeMinutesAtTopOfHour");
+    return isTopOfHour(minutes) && options.includeMinutes == null;
+  }
+  return isTopOfHour(minutes);
 }
 
 // # Date Helpers
