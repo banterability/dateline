@@ -1,13 +1,4 @@
-import {
-  describe,
-  it,
-  expect,
-  beforeAll,
-  beforeEach,
-  afterAll,
-  afterEach,
-  vi,
-} from "vitest";
+import {describe, it, expect} from "vitest";
 
 import Dateline from "../dateline.js";
 
@@ -36,22 +27,9 @@ describe("#getAPTime", function () {
 
   describe("special cases", function () {
     describe("top of the hour", function () {
-      beforeAll(function () {
-        vi.spyOn(console, "warn").mockImplementation(function () {});
-      });
-
-      afterAll(function () {
-        vi.restoreAllMocks();
-      });
-
       it("does not show minutes at the top of the hour by default", function () {
         let datelineObj = Dateline(new Date(2013, 7, 7, 14, 0));
         expect(datelineObj.getAPTime()).toBe("2 p.m.");
-      });
-
-      it("shows minutes at the top of the hour when includeMinutes is passed", function () {
-        let datelineObj = Dateline(new Date(2013, 7, 7, 14, 0));
-        expect(datelineObj.getAPTime({includeMinutes: true})).toBe("2:00 p.m.");
       });
     });
 
@@ -194,45 +172,6 @@ describe("#getAPTime", function () {
           });
           expect(actual).toBe("noon");
         });
-      });
-    });
-
-    describe('"includeMinutes" deprecation warning', function () {
-      let warnSpy;
-
-      beforeEach(function () {
-        warnSpy = vi.spyOn(console, "warn").mockImplementation(function () {});
-      });
-
-      afterEach(function () {
-        warnSpy.mockRestore();
-      });
-
-      it("warns when the deprecated option is passed", function () {
-        Dateline(new Date(2013, 7, 7, 14, 0)).getAPTime({includeMinutes: true});
-        expect(warnSpy).toHaveBeenCalledOnce();
-        expect(warnSpy.mock.calls[0][0]).toContain("includeMinutes");
-        expect(warnSpy.mock.calls[0][0]).toContain("includeMinutesAtTopOfHour");
-      });
-
-      it("warns on every call", function () {
-        let d = Dateline(new Date(2013, 7, 7, 14, 0));
-        d.getAPTime({includeMinutes: true});
-        d.getAPTime({includeMinutes: true});
-        d.getAPTime({includeMinutes: true});
-        expect(warnSpy).toHaveBeenCalledTimes(3);
-      });
-
-      it("does not warn when the option is not passed", function () {
-        Dateline(new Date(2013, 7, 7, 14, 0)).getAPTime();
-        expect(warnSpy).not.toHaveBeenCalled();
-      });
-
-      it("does not warn when the replacement option is used", function () {
-        Dateline(new Date(2013, 7, 7, 14, 0)).getAPTime({
-          includeMinutesAtTopOfHour: true,
-        });
-        expect(warnSpy).not.toHaveBeenCalled();
       });
     });
   });

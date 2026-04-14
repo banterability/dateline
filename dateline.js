@@ -103,15 +103,8 @@ function isTopOfHour(minutes) {
 }
 
 function showMinutes(minutes, options) {
-  if (options.includeMinutesAtTopOfHour != null) {
-    if (!isTopOfHour(minutes)) return true;
-    return !!options.includeMinutesAtTopOfHour;
-  }
-  if (options.includeMinutes != null) {
-    warnDeprecatedOption("includeMinutes", "includeMinutesAtTopOfHour");
-    return true;
-  }
-  return !isTopOfHour(minutes);
+  if (!isTopOfHour(minutes)) return true;
+  return !!options.includeMinutesAtTopOfHour;
 }
 
 // # Date Helpers
@@ -128,29 +121,7 @@ function getDayOfWeek(dateObj) {
 }
 
 function useDayName(dateObj, options) {
-  if (options.useDayNameWithinWeek != null) {
-    return options.useDayNameWithinWeek && withinAWeek(dateObj);
-  }
-  if (options.useDayNameForLastWeek != null) {
-    warnDeprecatedOption("useDayNameForLastWeek", "useDayNameWithinWeek");
-    return withinSevenDays(dateObj);
-  }
-  return false;
-}
-
-function warnDeprecatedOption(oldName, newName) {
-  console.warn(
-    'dateline: "' +
-      oldName +
-      '" is deprecated. Use "' +
-      newName +
-      '" instead. See https://github.com/banterability/dateline/blob/main/docs/options-v4-v5.md',
-  );
-}
-
-function withinSevenDays(dateObj) {
-  let diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
-  return -7 < diffInDays && diffInDays < 0;
+  return !!options.useDayNameWithinWeek && withinAWeek(dateObj);
 }
 
 function withinAWeek(dateObj) {

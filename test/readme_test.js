@@ -84,25 +84,6 @@ describe("README", function () {
           ).toBe("7:01");
         });
       });
-
-      describe('"includeMinutes" option', function () {
-        beforeAll(function () {
-          vi.useFakeTimers();
-          vi.setSystemTime(new Date(2016, 3, 20, 11, 0));
-          vi.spyOn(console, "warn").mockImplementation(function () {});
-        });
-
-        afterAll(function () {
-          vi.useRealTimers();
-          vi.restoreAllMocks();
-        });
-
-        it("includes minutes at the top of the hour if option is passed", function () {
-          expect(Dateline().getAPTime({includeMinutes: true})).toBe(
-            "11:00 a.m.",
-          );
-        });
-      });
     });
 
     describe("#getAPDate", function () {
@@ -190,32 +171,6 @@ describe("README", function () {
               useDayNameWithinWeek: true,
             }),
           ).toBe("June 29");
-        });
-      });
-
-      describe('"useDayNameForLastWeek" option', function () {
-        let myDate;
-
-        beforeAll(function () {
-          vi.useFakeTimers();
-          vi.setSystemTime(new Date(2009, 5, 22));
-          vi.spyOn(console, "warn").mockImplementation(function () {});
-          myDate = new Date(2009, 5, 20);
-        });
-
-        afterAll(function () {
-          vi.useRealTimers();
-          vi.restoreAllMocks();
-        });
-
-        it("renders the formatted date by default", function () {
-          expect(Dateline(myDate).getAPDate()).toBe("June 20");
-        });
-
-        it("uses the day name if option is passed", function () {
-          expect(
-            Dateline(myDate).getAPDate({useDayNameForLastWeek: true}),
-          ).toBe("Saturday");
         });
       });
     });

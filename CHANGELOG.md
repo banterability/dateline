@@ -1,3 +1,11 @@
+## Unreleased
+
+### Removed
+
+- **Removed**: `includeMinutes` option on `getAPTime`. Deprecated in v4; replaced by `includeMinutesAtTopOfHour`. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
+
+- **Removed**: `useDayNameForLastWeek` option on `getAPDate`. Deprecated in v4; replaced by `useDayNameWithinWeek`. See [`docs/options-v4-v5.md`](docs/options-v4-v5.md) for the migration.
+
 ## 4.0.0
 
 ### Breaking changes
