@@ -1,3 +1,9 @@
+## Unreleased
+
+### Fixed
+
+- `useDayNameWithinWeek` now measures its window against calendar days rather than counting out milliseconds. Previously the same target date could render as a weekday or a formatted date depending on the time of day when `getAPDate` was called. Technically a breaking change, but the old behavior was never intentional, so let's call it a bug fix.
+
 ## 5.0.0
 
 ### Breaking changes
