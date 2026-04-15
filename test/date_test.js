@@ -219,6 +219,26 @@ describe("#getAPDate", function () {
           expect(actual).toBe("Jan. 9");
         });
       });
+
+      describe("window is measured in calendar days, not wall-clock hours", function () {
+        it("excludes a target seven calendar days ahead when called late in the day", function () {
+          vi.setSystemTime(new Date(2013, 0, 2, 23, 30));
+          let target = new Date(2013, 0, 9, 12, 0);
+          let actual = Dateline(target).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Jan. 9");
+        });
+
+        it("excludes a target seven calendar days ago when called early in the day", function () {
+          vi.setSystemTime(new Date(2013, 0, 2, 5, 0));
+          let target = new Date(2012, 11, 26, 12, 0);
+          let actual = Dateline(target).getAPDate({
+            useDayNameWithinWeek: true,
+          });
+          expect(actual).toBe("Dec. 26, 2012");
+        });
+      });
     });
   });
 });

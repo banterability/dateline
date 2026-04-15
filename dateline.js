@@ -125,6 +125,11 @@ function useDayName(dateObj, options) {
 }
 
 function withinAWeek(dateObj) {
-  let diffInDays = (dateObj - new Date()) / ONE_DAY_IN_MS;
+  let diffInDays =
+    (startOfDay(dateObj) - startOfDay(new Date())) / ONE_DAY_IN_MS;
   return -7 < diffInDays && diffInDays < 7;
+}
+
+function startOfDay(dateObj) {
+  return new Date(dateObj.getFullYear(), dateObj.getMonth(), dateObj.getDate());
 }
